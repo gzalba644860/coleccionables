@@ -51,6 +51,20 @@ En `/admin` (solo admin): crear tipos, marcas, colecciones y cargar ítems en bl
 pegando líneas `codigo;nombre;variante;clave_imagen`. Si se omite la clave de imagen se usa
 `<slug-colección>/<código>.webp`, así que alcanza con subir las imágenes al bucket con ese nombre.
 
+## Imágenes de las figuritas
+
+Las imágenes viven en `public/catalogo/<slug-colección>/<código>.webp` (por ejemplo
+`public/catalogo/panini-mundial-2026/arg10.webp`), webp de 400 px de ancho, unos 25 KB cada una.
+`npm run catalog:mundiales` vincula automáticamente cada figurita con su archivo si existe.
+
+- **Mundial 2026**: las 980 cargadas.
+- **Rusia 2018 y Qatar 2022**: todavía sin imagen; se muestra la ficha propia. Para sumarlas basta con
+  copiar los `.webp` con ese nombre en su carpeta y volver a correr `npm run catalog:mundiales`.
+
+Mientras tanto Vercel las sirve desde `/public`. Para pasarlas a Cloudflare R2 se sube la carpeta
+tal cual (por ejemplo `rclone copy public/catalogo r2:<bucket>`) y se define
+`NEXT_PUBLIC_IMAGES_BASE_URL` con la URL pública del bucket; las claves no cambian.
+
 ## Deploy gratis
 
 1. **Turso**: `turso db create coleccionables`, luego `turso db show coleccionables --url` y `turso db tokens create coleccionables`.

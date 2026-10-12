@@ -3,7 +3,8 @@
  * fotos). En producción se recomienda Cloudflare R2 (10 GB gratis, sin costo
  * de salida) con un dominio público; en desarrollo se sirven desde /public.
  *
- * Convención de claves: "<marca>/<coleccion>/<codigo>.webp"
+ * Convención de claves: "<slug-coleccion>/<codigo-slug>.webp"
+ * (p. ej. "panini-mundial-2026/arg10.webp"), igual en public/catalogo y en R2.
  */
 const BASE = (process.env.NEXT_PUBLIC_IMAGES_BASE_URL ?? "/catalogo").replace(
   /\/$/,

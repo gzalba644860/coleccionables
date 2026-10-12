@@ -43,5 +43,3 @@ next-env.d.ts
 
 # base local
 local.db*
-# imágenes de ejemplo generadas por el seed
-/public/catalogo

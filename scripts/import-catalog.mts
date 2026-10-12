@@ -6,8 +6,13 @@
  *
  * Es idempotente: vuelve a correrse para corregir nombres o agregar ítems.
  * No borra ítems que ya no estén en el CSV (podrían tener inventario).
+ *
+ * Imágenes: si existe public/catalogo/<slug-coleccion>/<codigo-slug>.webp,
+ * el ítem queda con image_key "<slug-coleccion>/<codigo-slug>.webp" (la
+ * misma clave que se usa en el bucket de R2). Con --images <carpeta> se
+ * busca en otra carpeta local (útil si las imágenes ya están solo en R2).
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
@@ -22,6 +27,7 @@ const { positionals, values } = parseArgs({
     name: { type: "string" },
     year: { type: "string" },
     total: { type: "string" },
+    images: { type: "string" },
   },
 });
 const [file] = positionals;
@@ -105,9 +111,16 @@ const [collection] = await db
   })
   .returning();
 
+const imagesDir = values.images ?? "public/catalogo";
+const imageKeyFor = (code: string) => {
+  const key = `${slug}/${slugify(code)}.webp`;
+  return existsSync(`${imagesDir}/${key}`) ? key : null;
+};
+
 const items = data.map((r, i) => ({
   collectionId: collection.id,
   code: r[iCode].trim(),
+  imageKey: imageKeyFor(r[iCode].trim()),
   name: r[iName].trim(),
   section: iSection >= 0 ? r[iSection].trim() || null : null,
   sortOrder: iOrder >= 0 ? Number(r[iOrder]) : i,
@@ -123,8 +136,10 @@ for (let i = 0; i < items.length; i += 200) {
         name: sql`excluded.name`,
         section: sql`excluded.section`,
         sortOrder: sql`excluded.sort_order`,
+        imageKey: sql`coalesce(excluded.image_key, ${s.items.imageKey})`,
       },
     });
 }
-console.log(`${values.name}: ${items.length} ítems (colección ${slug})`);
+const withImage = items.filter((it) => it.imageKey).length;
+console.log(`${values.name}: ${items.length} ítems, ${withImage} con imagen (colección ${slug})`);
 client.close();
