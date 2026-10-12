@@ -35,6 +35,7 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
     id: i.itemId,
     code: i.code,
     name: i.name,
+    section: i.section,
     variant: i.variant,
     imageKey: i.imageKey,
     subtitle:

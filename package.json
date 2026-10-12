@@ -9,8 +9,10 @@
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.mts",
-    "db:seed": "tsx scripts/seed.mts",
-    "db:studio": "drizzle-kit studio"
+    "db:seed": "npm run catalog:mundiales && tsx scripts/seed.mts",
+    "db:studio": "drizzle-kit studio",
+    "catalog:import": "tsx scripts/import-catalog.mts",
+    "catalog:mundiales": "npm run catalog:import -- data/catalogo/panini-mundial-2018.csv --type Figuritas --brand Panini --name \"Mundial Rusia 2018\" --year 2018 && npm run catalog:import -- data/catalogo/panini-mundial-2022.csv --type Figuritas --brand Panini --name \"Mundial Qatar 2022\" --year 2022 && npm run catalog:import -- data/catalogo/panini-mundial-2026.csv --type Figuritas --brand Panini --name \"Mundial 2026\" --year 2026"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

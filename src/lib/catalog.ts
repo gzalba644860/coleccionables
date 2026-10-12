@@ -61,6 +61,7 @@ export type CatalogItem = {
   id: number;
   code: string;
   name: string;
+  section: string | null;
   variant: string;
   rarity: string | null;
   imageKey: string | null;
@@ -77,6 +78,7 @@ export async function getCollectionItems(
       id: items.id,
       code: items.code,
       name: items.name,
+      section: items.section,
       variant: items.variant,
       rarity: items.rarity,
       imageKey: items.imageKey,
@@ -95,6 +97,7 @@ export async function getItem(id: number) {
       id: items.id,
       code: items.code,
       name: items.name,
+      section: items.section,
       variant: items.variant,
       rarity: items.rarity,
       imageKey: items.imageKey,
@@ -130,7 +133,7 @@ export async function searchItems(f: SearchFilters, limit = 60) {
   if (f.collection) where.push(eq(items.collectionId, f.collection));
   if (f.q?.trim()) {
     const term = `%${f.q.trim()}%`;
-    where.push(or(like(items.name, term), like(items.code, term))!);
+    where.push(or(like(items.name, term), like(items.code, term), like(items.section, term))!);
   }
 
   const countFor = (list: "tengo" | "busco") =>
@@ -141,6 +144,7 @@ export async function searchItems(f: SearchFilters, limit = 60) {
       id: items.id,
       code: items.code,
       name: items.name,
+      section: items.section,
       variant: items.variant,
       imageKey: items.imageKey,
       collectionName: collections.name,

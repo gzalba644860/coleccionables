@@ -1,0 +1,683 @@
+codigo,nombre,seleccion,orden
+00,Panini,Especiales,0
+1,FIFA Fair Play,Especiales,1
+2,FIFA World Cup Trophy,Especiales,2
+3,Style guide 1,Especiales,3
+4,Style guide 2,Especiales,4
+5,FIFA World Cup Logo 1,Especiales,5
+6,FIFA World Cup Logo 2,Especiales,6
+7,Official Ball,Especiales,7
+8,Ekaterinburg Arena,Estadios,8
+9,Kaliningrad Stadium,Estadios,9
+10,Kazan Arena,Estadios,10
+11,Spartak Stadium,Estadios,11
+12,Nizhny Novgorod Stadium,Estadios,12
+13,Luzhniki Stadium,Estadios,13
+14,Rostov Arena,Estadios,14
+15,Saint Petersburg Stadium,Estadios,15
+16,Samara Arena,Estadios,16
+17,Mordovia Arena,Estadios,17
+18,Fisht Stadium,Estadios,18
+19,Volgograd Arena,Estadios,19
+20,Moscow 1,Ciudades sede,20
+21,Moscow 2,Ciudades sede,21
+22,Kaliningrad,Ciudades sede,22
+23,Saint Petersburg,Ciudades sede,23
+24,Sochi,Ciudades sede,24
+25,Rostov-On-Don,Ciudades sede,25
+26,Volgograd,Ciudades sede,26
+27,Kazan,Ciudades sede,27
+28,Nizhny Novgorod,Ciudades sede,28
+29,Samara,Ciudades sede,29
+30,Ekaterinburg,Ciudades sede,30
+31,Saransk,Ciudades sede,31
+32,Escudo,Rusia,32
+33,Foto del equipo,Rusia,33
+34,Igor Akinfeev,Rusia,34
+35,Igor Smolnikov,Rusia,35
+36,Viktor Vasin,Rusia,36
+37,Mário Fernandes,Rusia,37
+38,Fedor Kudryashov,Rusia,38
+39,Ilya Kutepov,Rusia,39
+40,Dmitri Kombarov,Rusia,40
+41,Aleksei Miranchuk,Rusia,41
+42,Denis Glushakov,Rusia,42
+43,Aleksandr Golovin,Rusia,43
+44,Yuri Zhirkov,Rusia,44
+45,Aleksandr Samedov,Rusia,45
+46,Aleksandr Erokhin,Rusia,46
+47,Alan Dzagoev,Rusia,47
+48,Daler Kuzyaev,Rusia,48
+49,Dmitri Poloz,Rusia,49
+50,Fedor Smolov,Rusia,50
+51,Aleksandr Kokorin,Rusia,51
+52,Escudo,Arabia Saudita,52
+53,Foto del equipo,Arabia Saudita,53
+54,Abdullah Al-Mayouf,Arabia Saudita,54
+55,Osama Hawsawi,Arabia Saudita,55
+56,Abdullah Al-Zori,Arabia Saudita,56
+57,Mansour Al-Harbi,Arabia Saudita,57
+58,Omar Hawsawi,Arabia Saudita,58
+59,Yasser Al-Shahrani,Arabia Saudita,59
+60,Motaz Hawsawi,Arabia Saudita,60
+61,Mohammed Al-Beraik,Arabia Saudita,61
+62,Taisir Al-Jassim,Arabia Saudita,62
+63,Salman Al-Faraj,Arabia Saudita,63
+64,Abdulmalek Al-Khaibri,Arabia Saudita,64
+65,Salman Al-Moasher,Arabia Saudita,65
+66,Yahya Al-Shehri,Arabia Saudita,66
+67,Salem Al-Dosari,Arabia Saudita,67
+68,Nawaf Al-Abed,Arabia Saudita,68
+69,Mohammad Al-Sahlawi,Arabia Saudita,69
+70,Nasser Al-Shamrani,Arabia Saudita,70
+71,Fahad Al-Muwallad,Arabia Saudita,71
+72,Escudo,Egipto,72
+73,Foto del equipo,Egipto,73
+74,Essam El Hadary,Egipto,74
+75,Ali Gabr,Egipto,75
+76,Ahmed Elmohamady,Egipto,76
+77,Omar Gaber,Egipto,77
+78,Ramy Rabia,Egipto,78
+79,Ahmed Hegazi,Egipto,79
+80,Ahmed Abdelmonem Fathy,Egipto,80
+81,Mohamed Abdel Shafy,Egipto,81
+82,Saad El-Din Samir,Egipto,82
+83,Tarek Hamed,Egipto,83
+84,Mahmoud Kahraba,Egipto,84
+85,Mohamed Elneny,Egipto,85
+86,Trézéguet,Egipto,86
+87,Abdallah El Said,Egipto,87
+88,Ramadan Sobhi,Egipto,88
+89,Ahmed Hassan,Egipto,89
+90,Mohamed Salah,Egipto,90
+91,Amr Gamal,Egipto,91
+92,Escudo,Uruguay,92
+93,Foto del equipo,Uruguay,93
+94,Fernando Muslera,Uruguay,94
+95,Maxi Pereira,Uruguay,95
+96,Diego Godín,Uruguay,96
+97,Martín Cáceres,Uruguay,97
+98,José Giménez,Uruguay,98
+99,Sebastián Coates,Uruguay,99
+100,Gastón Silva,Uruguay,100
+101,Mathías Corujo,Uruguay,101
+102,Egidio Arévalo Ríos,Uruguay,102
+103,Álvaro González,Uruguay,103
+104,Nicolás Lodeiro,Uruguay,104
+105,Carlos Sánchez,Uruguay,105
+106,Cristian Rodríguez,Uruguay,106
+107,Matías Vecino,Uruguay,107
+108,Edinson Cavani,Uruguay,108
+109,Luis Suárez,Uruguay,109
+110,Cristhian Stuani,Uruguay,110
+111,Diego Rolán,Uruguay,111
+112,Escudo,Portugal,112
+113,Foto del equipo,Portugal,113
+114,Rui Patrício,Portugal,114
+115,Bruno Alves,Portugal,115
+116,Pepe,Portugal,116
+117,José Fonte,Portugal,117
+118,Eliseu,Portugal,118
+119,Cédric Soares,Portugal,119
+120,Raphaël Guerreiro,Portugal,120
+121,João Moutinho,Portugal,121
+122,João Mário,Portugal,122
+123,Danilo Pereira,Portugal,123
+124,William Carvalho,Portugal,124
+125,André Gomes,Portugal,125
+126,Ricardo Quaresma,Portugal,126
+127,Bernardo Silva,Portugal,127
+128,André Silva,Portugal,128
+129,Gelson Martins,Portugal,129
+130,Cristiano Ronaldo,Portugal,130
+131,Nani,Portugal,131
+132,Escudo,España,132
+133,Foto del equipo,España,133
+134,David de Gea,España,134
+135,Jordi Alba,España,135
+136,Nacho Fernández,España,136
+137,Nacho Monreal,España,137
+138,Gerard Piqué,España,138
+139,Sergio Ramos,España,139
+140,Daniel Carvajal,España,140
+141,Sergio Busquets,España,141
+142,Thiago Alcántara,España,142
+143,Isco,España,143
+144,Koke,España,144
+145,Marco Asensio,España,145
+146,Andrés Iniesta,España,146
+147,David Silva,España,147
+148,Saúl Ñíguez,España,148
+149,Álvaro Morata,España,149
+150,Vitolo,España,150
+151,Diego Costa,España,151
+152,Escudo,Marruecos,152
+153,Foto del equipo,Marruecos,153
+154,Munir Mohamedi,Marruecos,154
+155,Medhi Benatia,Marruecos,155
+156,Nabil Dirar,Marruecos,156
+157,Romain Saïss,Marruecos,157
+158,Fouad Chafik,Marruecos,158
+159,Hamza Mendyl,Marruecos,159
+160,Achraf Hakimi,Marruecos,160
+161,Mbark Boussoufa,Marruecos,161
+162,Karim El Ahmadi,Marruecos,162
+163,Younès Belhanda,Marruecos,163
+164,Nordin Amrabat,Marruecos,164
+165,Fayçal Fajr,Marruecos,165
+166,Hakim Ziyech,Marruecos,166
+167,Youssef Aït Bennasser,Marruecos,167
+168,Khalid Boutaïb,Marruecos,168
+169,Rachid Alioui,Marruecos,169
+170,Aziz Bouhaddouz,Marruecos,170
+171,Youssef En-Nesyri,Marruecos,171
+172,Escudo,Irán,172
+173,Foto del equipo,Irán,173
+174,Alireza Beiranvand,Irán,174
+175,Pejman Montazeri,Irán,175
+176,Vouria Ghafouri,Irán,176
+177,Jalal Hosseini,Irán,177
+178,Milad Mohammadi,Irán,178
+179,Morteza Pouraliganji,Irán,179
+180,Ramin Rezaeian,Irán,180
+181,Ehsan Hajsafi,Irán,181
+182,Omid Ebrahimi,Irán,182
+183,Saeid Ezatolahi,Irán,183
+184,Vahid Amiri,Irán,184
+185,Alireza Jahanbakhsh,Irán,185
+186,Ashkan Dejagah,Irán,186
+187,Saman Ghoddos,Irán,187
+188,Mehdi Taremi,Irán,188
+189,Karim Ansarifard,Irán,189
+190,Reza Ghoochannejhad,Irán,190
+191,Sardar Azmoun,Irán,191
+192,Escudo,Francia,192
+193,Foto del equipo,Francia,193
+194,Hugo Lloris,Francia,194
+195,Raphaël Varane,Francia,195
+196,Lucas Digne,Francia,196
+197,Djibril Sidibé,Francia,197
+198,Samuel Umtiti,Francia,198
+199,Layvin Kurzawa,Francia,199
+200,Laurent Koscielny,Francia,200
+201,Blaise Matuidi,Francia,201
+202,N'Golo Kanté,Francia,202
+203,Thomas Lemar,Francia,203
+204,Adrien Rabiot,Francia,204
+205,Paul Pogba,Francia,205
+206,Olivier Giroud,Francia,206
+207,Antoine Griezmann,Francia,207
+208,Alexandre Lacazette,Francia,208
+209,Kylian Mbappé,Francia,209
+210,Ousmane Dembélé,Francia,210
+211,Anthony Martial,Francia,211
+212,Escudo,Australia,212
+213,Foto del equipo,Australia,213
+214,Mathew Ryan,Australia,214
+215,Mitchell Langerak,Australia,215
+216,Milos Degenek,Australia,216
+217,Bailey Wright,Australia,217
+218,Aziz Behich,Australia,218
+219,Trent Sainsbury,Australia,219
+220,Ryan McGowan,Australia,220
+221,Mark Milligan,Australia,221
+222,Aaron Mooy,Australia,222
+223,James Troisi,Australia,223
+224,Mile Jedinak,Australia,224
+225,Massimo Luongo,Australia,225
+226,Jackson Irvine,Australia,226
+227,Tom Rogic,Australia,227
+228,Tim Cahill,Australia,228
+229,Mathew Leckie,Australia,229
+230,Tomi Juric,Australia,230
+231,Robbie Kruse,Australia,231
+232,Escudo,Perú,232
+233,Foto del equipo,Perú,233
+234,Pedro Gallese,Perú,234
+235,Carlos Cáceda,Perú,235
+236,Aldo Corzo,Perú,236
+237,Miguel Trauco,Perú,237
+238,Christian Ramos,Perú,238
+239,Luis Advíncula,Perú,239
+240,Alberto Rodríguez,Perú,240
+241,Miguel Araujo,Perú,241
+242,Christian Cueva,Perú,242
+243,Renato Tapia,Perú,243
+244,Andy Polo,Perú,244
+245,Yoshimar Yotún,Perú,245
+246,Edison Flores,Perú,246
+247,Paolo Hurtado,Perú,247
+248,Paolo Guerrero,Perú,248
+249,Jefferson Farfán,Perú,249
+250,Raul Ruidíaz,Perú,250
+251,André Carrillo,Perú,251
+252,Escudo,Dinamarca,252
+253,Foto del equipo,Dinamarca,253
+254,Kasper Schmeichel,Dinamarca,254
+255,Jannik Vestergaard,Dinamarca,255
+256,Simon Kjaer,Dinamarca,256
+257,Andreas Christensen,Dinamarca,257
+258,Andreas Bjelland,Dinamarca,258
+259,Mathias Jørgensen,Dinamarca,259
+260,Jens Stryger Larsen,Dinamarca,260
+261,Peter Ankersen,Dinamarca,261
+262,Riza Durmisi,Dinamarca,262
+263,William Kvist,Dinamarca,263
+264,Thomas Delaney,Dinamarca,264
+265,Christian Eriksen,Dinamarca,265
+266,Lasse Schöne,Dinamarca,266
+267,Pione Sisto,Dinamarca,267
+268,Nicklas Bendtner,Dinamarca,268
+269,Nicolai Jørgensen,Dinamarca,269
+270,Yussuf Poulsen,Dinamarca,270
+271,Andreas Cornelius,Dinamarca,271
+272,Escudo,Argentina,272
+273,Foto del equipo,Argentina,273
+274,Sergio Romero,Argentina,274
+275,Gabriel Mercado,Argentina,275
+276,Federico Fazio,Argentina,276
+277,Javier Mascherano,Argentina,277
+278,Nicolás Otamendi,Argentina,278
+279,Marcos Rojo,Argentina,279
+280,Ramiro Funes Mori,Argentina,280
+281,Lucas Biglia,Argentina,281
+282,Enzo Pérez,Argentina,282
+283,Ángel Di María,Argentina,283
+284,Marcos Acuña,Argentina,284
+285,Éver Banega,Argentina,285
+286,Eduardo Salvio,Argentina,286
+287,Mauro Icardi,Argentina,287
+288,Lionel Messi,Argentina,288
+289,Paulo Dybala,Argentina,289
+290,Sergio Agüero,Argentina,290
+291,Gonzalo Higuaín,Argentina,291
+292,Escudo,Islandia,292
+293,Foto del equipo,Islandia,293
+294,Hannes Halldórsson,Islandia,294
+295,Birkir Sævarsson,Islandia,295
+296,Ragnar Sigurdsson,Islandia,296
+297,Kári Árnason,Islandia,297
+298,Ari Skúlason,Islandia,298
+299,Sverrir Ingason,Islandia,299
+300,Hordur Magnússon,Islandia,300
+301,Aron Gunnarsson,Islandia,301
+302,Birkir Bjarnason,Islandia,302
+303,Emil Hallfredsson,Islandia,303
+304,Gylfi Sigurdsson,Islandia,304
+305,Arnór Ingvi Traustason,Islandia,305
+306,Rúrik Gislason,Islandia,306
+307,Johann Gudmundsson,Islandia,307
+308,Alfred Finnbogason,Islandia,308
+309,Jón Dadi Bödvarsson,Islandia,309
+310,Vidar Örn Kjartansson,Islandia,310
+311,Björn Sigurdarson,Islandia,311
+312,Escudo,Croacia,312
+313,Foto del equipo,Croacia,313
+314,Danijel Subašić,Croacia,314
+315,Šime Vrsaljko,Croacia,315
+316,Ivan Strinić,Croacia,316
+317,Dejan Lovren,Croacia,317
+318,Domagoj Vida,Croacia,318
+319,Josip Pivarić,Croacia,319
+320,Vedran Ćorluka,Croacia,320
+321,Ivan Rakitić,Croacia,321
+322,Luka Modrić,Croacia,322
+323,Marcelo Brozović,Croacia,323
+324,Marko Rog,Croacia,324
+325,Mario Pašalić,Croacia,325
+326,Milan Badelj,Croacia,326
+327,Mateo Kovačić,Croacia,327
+328,Andrej Kramarić,Croacia,328
+329,Nikola Kalinić,Croacia,329
+330,Mario Mandžukić,Croacia,330
+331,Ivan Perišić,Croacia,331
+332,Escudo,Nigeria,332
+333,Foto del equipo,Nigeria,333
+334,Ikechukwu Ezenwa,Nigeria,334
+335,Elderson Echiéjilé,Nigeria,335
+336,Shehu Abdullahi,Nigeria,336
+337,William Troost-Ekong,Nigeria,337
+338,Leon Balogun,Nigeria,338
+339,Kenneth Omeruo,Nigeria,339
+340,Ola Aina,Nigeria,340
+341,John Obi Mikel,Nigeria,341
+342,Ogenyi Onazi,Nigeria,342
+343,Etebo Oghenekaro,Nigeria,343
+344,Wilfred Ndidi,Nigeria,344
+345,Mikel Agu,Nigeria,345
+346,Ahmed Musa,Nigeria,346
+347,Victor Moses,Nigeria,347
+348,Moses Simon,Nigeria,348
+349,Odion Ighalo,Nigeria,349
+350,Alex Iwobi,Nigeria,350
+351,Kelechi Iheanacho,Nigeria,351
+352,Escudo,Brasil,352
+353,Foto del equipo,Brasil,353
+354,Alisson,Brasil,354
+355,Dani Alves,Brasil,355
+356,Thiago Silva,Brasil,356
+357,Miranda,Brasil,357
+358,Filipe Luís,Brasil,358
+359,Marquinhos,Brasil,359
+360,Marcelo,Brasil,360
+361,Willian,Brasil,361
+362,Paulinho,Brasil,362
+363,Fernandinho,Brasil,363
+364,Casemiro,Brasil,364
+365,Renato Augusto,Brasil,365
+366,Giuliano,Brasil,366
+367,Philippe Coutinho,Brasil,367
+368,Douglas Costa,Brasil,368
+369,Roberto Firmino,Brasil,369
+370,Gabriel Jesus,Brasil,370
+371,Neymar Jr,Brasil,371
+372,Escudo,Suiza,372
+373,Foto del equipo,Suiza,373
+374,Yann Sommer,Suiza,374
+375,Stephan Lichtsteiner,Suiza,375
+376,Manuel Akanji,Suiza,376
+377,Michael Lang,Suiza,377
+378,Ricardo Rodríguez,Suiza,378
+379,Johan Djourou,Suiza,379
+380,Fabian Schär,Suiza,380
+381,Granit Xhaka,Suiza,381
+382,Steven Zuber,Suiza,382
+383,Blerim Džemaili,Suiza,383
+384,Denis Zakaria,Suiza,384
+385,Xherdan Shaqiri,Suiza,385
+386,Valon Behrami,Suiza,386
+387,Gelson Fernandes,Suiza,387
+388,Breel Embolo,Suiza,388
+389,Haris Seferović,Suiza,389
+390,Admir Mehmedi,Suiza,390
+391,Eren Derdiyok,Suiza,391
+392,Escudo,Costa Rica,392
+393,Foto del equipo,Costa Rica,393
+394,Keylor Navas,Costa Rica,394
+395,Giancarlo González,Costa Rica,395
+396,Cristian Gamboa,Costa Rica,396
+397,Bryan Oviedo,Costa Rica,397
+398,Francisco Calvo,Costa Rica,398
+399,Kendall Waston,Costa Rica,399
+400,Ronald Matarrita,Costa Rica,400
+401,Michael Umaña,Costa Rica,401
+402,Johnny Acosta,Costa Rica,402
+403,Bryan Ruiz,Costa Rica,403
+404,Celso Borges,Costa Rica,404
+405,Christian Bolaños,Costa Rica,405
+406,Randall Azofeifa,Costa Rica,406
+407,David Guzmán,Costa Rica,407
+408,Rodney Wallace,Costa Rica,408
+409,Joel Campbell,Costa Rica,409
+410,Marco Ureña,Costa Rica,410
+411,Johan Venegas,Costa Rica,411
+412,Escudo,Serbia,412
+413,Foto del equipo,Serbia,413
+414,Vladimir Stojković,Serbia,414
+415,Branislav Ivanović,Serbia,415
+416,Aleksandar Kolarov,Serbia,416
+417,Antonio Rukavina,Serbia,417
+418,Matija Nastasić,Serbia,418
+419,Duško Tošić,Serbia,419
+420,Nikola Maksimović,Serbia,420
+421,Jagoš Vuković,Serbia,421
+422,Dušan Tadić,Serbia,422
+423,Sergej Milinković-Savić,Serbia,423
+424,Nemanja Matić,Serbia,424
+425,Luka Milivojević,Serbia,425
+426,Adem Ljajić,Serbia,426
+427,Nemanja Gudelj,Serbia,427
+428,Mijat Gaćinović,Serbia,428
+429,Filip Kostić,Serbia,429
+430,Aleksandar Mitrović,Serbia,430
+431,Aleksandar Prijović,Serbia,431
+432,Escudo,Alemania,432
+433,Foto del equipo,Alemania,433
+434,Manuel Neuer,Alemania,434
+435,Mats Hummels,Alemania,435
+436,Antonio Rüdiger,Alemania,436
+437,Jérôme Boateng,Alemania,437
+438,Joshua Kimmich,Alemania,438
+439,Jonas Hector,Alemania,439
+440,Julian Draxler,Alemania,440
+441,Toni Kroos,Alemania,441
+442,Emre Can,Alemania,442
+443,Leon Goretzka,Alemania,443
+444,Julian Brandt,Alemania,444
+445,Sebastian Rudy,Alemania,445
+446,Leroy Sané,Alemania,446
+447,Mesut Özil,Alemania,447
+448,Sami Khedira,Alemania,448
+449,Mario Götze,Alemania,449
+450,Thomas Müller,Alemania,450
+451,Timo Werner,Alemania,451
+452,Escudo,México,452
+453,Foto del equipo,México,453
+454,Guillermo Ochoa,México,454
+455,Hugo Ayala,México,455
+456,Diego Reyes,México,456
+457,Héctor Moreno,México,457
+458,Jesús Gallardo,México,458
+459,Miguel Layún,México,459
+460,Carlos Salcedo,México,460
+461,Jonathan dos Santos,México,461
+462,Giovani dos Santos,México,462
+463,Andrés Guardado,México,463
+464,Héctor Herrera,México,464
+465,Javier Aquino,México,465
+466,Jesús Corona,México,466
+467,Hirving Lozano,México,467
+468,Raúl Jiménez,México,468
+469,Carlos Vela,México,469
+470,Javier Hernández,México,470
+471,Oribe Peralta,México,471
+472,Escudo,Suecia,472
+473,Foto del equipo,Suecia,473
+474,Robin Olsen,Suecia,474
+475,Mikael Lustig,Suecia,475
+476,Victor Nilsson Lindelöf,Suecia,476
+477,Andreas Granqvist,Suecia,477
+478,Martin Olsson,Suecia,478
+479,Ludwig Augustinsson,Suecia,479
+480,Emil Krafth,Suecia,480
+481,Pontus Jansson,Suecia,481
+482,Sebastian Larsson,Suecia,482
+483,Emil Forsberg,Suecia,483
+484,Gustav Svensson,Suecia,484
+485,Viktor Claesson,Suecia,485
+486,Jimmy Durmaz,Suecia,486
+487,Albin Ekdal,Suecia,487
+488,Isaac Kiese Thelin,Suecia,488
+489,Marcus Berg,Suecia,489
+490,John Guidetti,Suecia,490
+491,Ola Toivonen,Suecia,491
+492,Escudo,Corea del Sur,492
+493,Foto del equipo,Corea del Sur,493
+494,Kim Seung-gyu,Corea del Sur,494
+495,Kim Young-gwon,Corea del Sur,495
+496,Kim Jin-su,Corea del Sur,496
+497,Kwak Tae-hwi,Corea del Sur,497
+498,Hong Jeong-ho,Corea del Sur,498
+499,Jang Hyun-soo,Corea del Sur,499
+500,Koo Ja-cheol,Corea del Sur,500
+501,Kwon Chang-hoon,Corea del Sur,501
+502,Ki Sung-yueng,Corea del Sur,502
+503,Nam Tae-hee,Corea del Sur,503
+504,Han Kook-young,Corea del Sur,504
+505,Lee Chung-yong,Corea del Sur,505
+506,Jung Woo-young,Corea del Sur,506
+507,Lee Jae-sung,Corea del Sur,507
+508,Son Heung-min,Corea del Sur,508
+509,Ji Dong-won,Corea del Sur,509
+510,Kim Shin-wook,Corea del Sur,510
+511,Hwang Hee-chan,Corea del Sur,511
+512,Escudo,Bélgica,512
+513,Foto del equipo,Bélgica,513
+514,Thibaut Courtois,Bélgica,514
+515,Toby Alderweireld,Bélgica,515
+516,Thomas Vermaelen,Bélgica,516
+517,Jan Vertonghen,Bélgica,517
+518,Vincent Kompany,Bélgica,518
+519,Thomas Meunier,Bélgica,519
+520,Axel Witsel,Bélgica,520
+521,Radja Nainggolan,Bélgica,521
+522,Kevin De Bruyne,Bélgica,522
+523,Marouane Fellaini,Bélgica,523
+524,Youri Tielemans,Bélgica,524
+525,Mousa Dembélé,Bélgica,525
+526,Nacer Chadli,Bélgica,526
+527,Eden Hazard,Bélgica,527
+528,Yannick Carrasco,Bélgica,528
+529,Dries Mertens,Bélgica,529
+530,Michy Batshuayi,Bélgica,530
+531,Romelu Lukaku,Bélgica,531
+532,Escudo,Panamá,532
+533,Foto del equipo,Panamá,533
+534,Jaime Penedo,Panamá,534
+535,José Calderón,Panamá,535
+536,Michael Murillo,Panamá,536
+537,Fidel Escobar,Panamá,537
+538,Román Torres,Panamá,538
+539,Adolfo Machado,Panamá,539
+540,Eric Davis,Panamá,540
+541,Luis Ovalle,Panamá,541
+542,Felipe Baloy,Panamá,542
+543,Gabriel Gómez,Panamá,543
+544,Édgar Bárcenas,Panamá,544
+545,Armando Cooper,Panamá,545
+546,Alberto Quintero,Panamá,546
+547,Aníbal Godoy,Panamá,547
+548,Blas Pérez,Panamá,548
+549,Gabriel Torres,Panamá,549
+550,Luis Tejada,Panamá,550
+551,Abdiel Arroyo,Panamá,551
+552,Escudo,Túnez,552
+553,Foto del equipo,Túnez,553
+554,Aymen Mathlouthi,Túnez,554
+555,Ali Maâloul,Túnez,555
+556,Syam Ben Youssef,Túnez,556
+557,Aymen Abdennour,Túnez,557
+558,Hamdi Nagguez,Túnez,558
+559,Yassine Meriah,Túnez,559
+560,Oussama Haddadi,Túnez,560
+561,Ferjani Sassi,Túnez,561
+562,Wahbi Khazri,Túnez,562
+563,Mohamed Amine Ben Amor,Túnez,563
+564,Ghailene Chaalali,Túnez,564
+565,Naïm Sliti,Túnez,565
+566,Youssef Msakni,Túnez,566
+567,Fakhreddine Ben Youssef,Túnez,567
+568,Taha Yassine Khenissi,Túnez,568
+569,Yoann Touzghar,Túnez,569
+570,Anice Badri,Túnez,570
+571,Ahmed Akaïchi,Túnez,571
+572,Escudo,Inglaterra,572
+573,Foto del equipo,Inglaterra,573
+574,Joe Hart,Inglaterra,574
+575,Jordan Pickford,Inglaterra,575
+576,Gary Cahill,Inglaterra,576
+577,Kyle Walker,Inglaterra,577
+578,John Stones,Inglaterra,578
+579,Ryan Bertrand,Inglaterra,579
+580,Danny Rose,Inglaterra,580
+581,Phil Jones,Inglaterra,581
+582,Jordan Henderson,Inglaterra,582
+583,Alex Oxlade-Chamberlain,Inglaterra,583
+584,Dele Alli,Inglaterra,584
+585,Eric Dier,Inglaterra,585
+586,Adam Lallana,Inglaterra,586
+587,Jesse Lingard,Inglaterra,587
+588,Raheem Sterling,Inglaterra,588
+589,Harry Kane,Inglaterra,589
+590,Marcus Rashford,Inglaterra,590
+591,Jamie Vardy,Inglaterra,591
+592,Escudo,Polonia,592
+593,Foto del equipo,Polonia,593
+594,Łukasz Fabiański,Polonia,594
+595,Wojciech Szczęsny,Polonia,595
+596,Łukasz Piszczek,Polonia,596
+597,Kamil Glik,Polonia,597
+598,Michał Pazdan,Polonia,598
+599,Thiago Cionek,Polonia,599
+600,Bartosz Bereszyński,Polonia,600
+601,Artur Jędrzejczyk,Polonia,601
+602,Maciej Rybus,Polonia,602
+603,Jakub Błaszczykowski,Polonia,603
+604,Kamil Grosicki,Polonia,604
+605,Grzegorz Krychowiak,Polonia,605
+606,Krzysztof Mączyński,Polonia,606
+607,Piotr Zieliński,Polonia,607
+608,Karol Linetty,Polonia,608
+609,Robert Lewandowski,Polonia,609
+610,Łukasz Teodorczyk,Polonia,610
+611,Arkadiusz Milik,Polonia,611
+612,Escudo,Senegal,612
+613,Foto del equipo,Senegal,613
+614,Khadim N'Diaye,Senegal,614
+615,Kara Mbodji,Senegal,615
+616,Lamine Gassama,Senegal,616
+617,Kalidou Koulibaly,Senegal,617
+618,Salif Sané,Senegal,618
+619,Saliou Ciss,Senegal,619
+620,Moussa Wagué,Senegal,620
+621,Idrissa Gueye,Senegal,621
+622,Cheikhou Kouyaté,Senegal,622
+623,Cheikh Ndoye,Senegal,623
+624,Pape Alioune N'Diaye,Senegal,624
+625,Sadio Mané,Senegal,625
+626,Moussa Sow,Senegal,626
+627,Moussa Konaté,Senegal,627
+628,Keita Baldé,Senegal,628
+629,M'Baye Niang,Senegal,629
+630,Ismaïla Sarr,Senegal,630
+631,Mame Diouf,Senegal,631
+632,Escudo,Colombia,632
+633,Foto del equipo,Colombia,633
+634,David Ospina,Colombia,634
+635,Cristian Zapata,Colombia,635
+636,Santiago Arias,Colombia,636
+637,Frank Fabra,Colombia,637
+638,Davinson Sánchez,Colombia,638
+639,Yerry Mina,Colombia,639
+640,Carlos Sánchez,Colombia,640
+641,Juan Guillermo Cuadrado,Colombia,641
+642,Abel Aguilar,Colombia,642
+643,James Rodríguez,Colombia,643
+644,Giovanni Moreno,Colombia,644
+645,Wílmar Barrios,Colombia,645
+646,Radamel Falcao García,Colombia,646
+647,Teófilo Gutiérrez,Colombia,647
+648,Carlos Bacca,Colombia,648
+649,Edwin Cardona,Colombia,649
+650,Yimmi Chará,Colombia,650
+651,Duván Zapata,Colombia,651
+652,Escudo,Japón,652
+653,Foto del equipo,Japón,653
+654,Eiji Kawashima,Japón,654
+655,Shusaku Nishikawa,Japón,655
+656,Masato Morishige,Japón,656
+657,Yuto Nagatomo,Japón,657
+658,Hiroki Sakai,Japón,658
+659,Tomoaki Makino,Japón,659
+660,Gotoku Sakai,Japón,660
+661,Maya Yoshida,Japón,661
+662,Hotaru Yamaguchi,Japón,662
+663,Shinji Kagawa,Japón,663
+664,Makoto Hasebe,Japón,664
+665,Hiroshi Kiyotake,Japón,665
+666,Keisuke Honda,Japón,666
+667,Takashi Usami,Japón,667
+668,Genki Haraguchi,Japón,668
+669,Shinji Okazaki,Japón,669
+670,Yuya Kubo,Japón,670
+671,Yuya Osako,Japón,671
+672,Brazil 1958,Leyendas,672
+673,Germany 2014,Leyendas,673
+674,Italy 1982,Leyendas,674
+675,Uruguay 1930,Leyendas,675
+676,Argentina 1986,Leyendas,676
+677,England 1966,Leyendas,677
+678,France 1998,Leyendas,678
+679,Spain 2010,Leyendas,679
+680,Pelé (más victorias),Leyendas,680
+681,Miroslav Klose (más goles),Leyendas,681

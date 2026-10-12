@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { imageUrl } from "@/lib/images";
+import { ItemImage } from "./item-image";
 import { ItemActions } from "./item-actions";
 
 export type ItemCardData = {
   id: number;
   code: string;
   name: string;
+  section?: string | null;
   variant?: string;
   imageKey: string | null;
   subtitle?: string;
@@ -25,22 +26,13 @@ export function ItemCard({
   return (
     <div className="card flex flex-col overflow-hidden">
       <Link href={`/item/${item.id}`} className="block">
-        <div className="relative aspect-[3/4] bg-background">
-          {/* Imágenes del catálogo servidas desde el bucket/CDN, ya optimizadas. */}
-          <img
-            src={imageUrl(item.imageKey)}
-            alt={`${item.code} ${item.name}`}
-            loading="lazy"
-            className="h-full w-full object-contain"
-          />
-          <span className="absolute left-1.5 top-1.5 rounded bg-black/70 px-1.5 py-0.5 text-xs font-bold text-white">
-            {item.code}
-          </span>
-        </div>
+        <ItemImage code={item.code} name={item.name} section={item.section} imageKey={item.imageKey} />
         <div className="p-2">
-          <p className="line-clamp-1 text-sm font-medium">{item.name}</p>
-          {item.subtitle && (
-            <p className="line-clamp-1 text-xs text-muted">{item.subtitle}</p>
+          <p className="line-clamp-1 text-sm font-medium">
+            <span className="text-muted">{item.code}</span> {item.name}
+          </p>
+          {(item.subtitle || item.section) && (
+            <p className="line-clamp-1 text-xs text-muted">{item.subtitle ?? item.section}</p>
           )}
           {item.variant && item.variant !== "normal" && (
             <p className="text-xs text-accent">{item.variant}</p>

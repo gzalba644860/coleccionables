@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { requireUser } from "@/lib/auth";
-import { imageUrl } from "@/lib/images";
+import { ItemImage } from "@/components/item-image";
 import { getMatches } from "@/lib/inventory";
 
 export default function MatchesPage() {
@@ -53,13 +53,8 @@ async function Matches() {
           <div className="flex gap-2 overflow-x-auto pb-1">
             {g.items.map((i) => (
               <Link key={i.itemId} href={`/item/${i.itemId}`} className="w-20 shrink-0 text-center">
-                <img
-                  src={imageUrl(i.imageKey)}
-                  alt={i.name}
-                  loading="lazy"
-                  className="aspect-[3/4] w-full rounded bg-background object-contain"
-                />
-                <span className="text-xs">#{i.code}</span>
+                <ItemImage code={i.code} name={i.name} section={i.section} imageKey={i.imageKey} className="rounded" compact />
+                <span className="line-clamp-1 text-xs">{i.name}</span>
               </Link>
             ))}
           </div>

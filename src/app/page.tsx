@@ -35,12 +35,18 @@ export default async function Home() {
                 className="card overflow-hidden transition hover:border-accent"
               >
                 <div className="aspect-video bg-background">
-                  <img
-                    src={imageUrl(c.coverImageKey)}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
+                  {c.coverImageKey ? (
+                    <img
+                      src={imageUrl(c.coverImageKey)}
+                      alt={c.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full items-end bg-gradient-to-br from-accent to-foreground/80 p-3 text-4xl font-black text-white">
+                      {c.year}
+                    </div>
+                  )}
                 </div>
                 <div className="p-3">
                   <p className="font-medium leading-tight">{c.name}</p>

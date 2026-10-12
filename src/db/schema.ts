@@ -64,6 +64,8 @@ export const items = sqliteTable(
     /** Número o código impreso: "12", "ARG 5", "LOB-001". */
     code: text("code").notNull(),
     name: text("name").notNull(),
+    /** Sección dentro de la colección: selección, equipo, "Estadios"… */
+    section: text("section"),
     /** Variante: normal, brillante, holográfica, edición especial… */
     variant: text("variant").notNull().default("normal"),
     rarity: text("rarity"),
@@ -79,6 +81,7 @@ export const items = sqliteTable(
     ),
     index("items_collection_sort_idx").on(t.collectionId, t.sortOrder),
     index("items_name_idx").on(t.name),
+    index("items_collection_section_idx").on(t.collectionId, t.section),
   ],
 );
 

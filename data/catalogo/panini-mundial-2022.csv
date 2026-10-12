@@ -1,0 +1,671 @@
+codigo,nombre,seleccion,orden
+00,Panini,Especiales,0
+FWC1,FIFA,Especiales,1
+FWC2,Official Trophy,Especiales,2
+FWC3,Official Trophy,Especiales,3
+FWC4,Official Mascot,Especiales,4
+FWC5,Official Mascot,Especiales,5
+FWC6,Official Emblem,Especiales,6
+FWC7,Official Emblem,Especiales,7
+FWC8,Ahmad Bin Ali Stadium,Especiales,8
+FWC9,Al Janoub Stadium,Especiales,9
+FWC10,Al Thumama Stadium,Especiales,10
+FWC11,Education City Stadium,Especiales,11
+FWC12,Khalifa International Stadium,Especiales,12
+FWC13,Stadium 974,Especiales,13
+FWC14,Al Bayt Stadium outdoor,Especiales,14
+FWC15,Al Bayt Stadium indoor,Especiales,15
+FWC16,Lusail Stadium outdoor,Especiales,16
+FWC17,Lusail Stadium indoor,Especiales,17
+FWC18,Official Match Ball,Especiales,18
+QAT1,Foto del equipo,Catar,19
+QAT2,Escudo,Catar,20
+QAT3,Saad Al Sheeb,Catar,21
+QAT4,Meshaal Barsham,Catar,22
+QAT5,Homam Ahmed,Catar,23
+QAT6,Bassam Alrawi,Catar,24
+QAT7,Abdulkarim Hassan,Catar,25
+QAT8,Musaab Khidir,Catar,26
+QAT9,Boualem Khoukhi,Catar,27
+QAT10,Pedro Miguel,Catar,28
+QAT11,Tarek Salman,Catar,29
+QAT12,Karim Boudiaf,Catar,30
+QAT13,Abdulaziz Hatem,Catar,31
+QAT14,Assim Omer Madibo,Catar,32
+QAT15,Yousuf Abdurisag,Catar,33
+QAT16,Akram Hassan Afif,Catar,34
+QAT17,Ahmad Alaaeldin,Catar,35
+QAT18,Hasan Al-Haydos,Catar,36
+QAT19,Almoez Ali,Catar,37
+QAT20,Mohammed Muntari,Catar,38
+ECU1,Foto del equipo,Ecuador,39
+ECU2,Escudo,Ecuador,40
+ECU3,Hernán Galíndez,Ecuador,41
+ECU4,Alexander Domínguez,Ecuador,42
+ECU5,Robert Arboleda,Ecuador,43
+ECU6,Byron Castillo,Ecuador,44
+ECU7,Pervis Estupiñán,Ecuador,45
+ECU8,Piero Hincapié,Ecuador,46
+ECU9,Ángelo Preciado,Ecuador,47
+ECU10,Félix Torres,Ecuador,48
+ECU11,Moisés Caicedo,Ecuador,49
+ECU12,Alan Franco,Ecuador,50
+ECU13,Carlos Gruezo,Ecuador,51
+ECU14,Jhegson Méndez,Ecuador,52
+ECU15,Jeremy Sarmiento,Ecuador,53
+ECU16,Michael Estrada,Ecuador,54
+ECU17,Ángel Mena,Ecuador,55
+ECU18,Gonzalo Plata,Ecuador,56
+ECU19,Ayrton Preciado,Ecuador,57
+ECU20,Enner Valencia,Ecuador,58
+SEN1,Foto del equipo,Senegal,59
+SEN2,Escudo,Senegal,60
+SEN3,Édouard Mendy,Senegal,61
+SEN4,Alfred Gomis,Senegal,62
+SEN5,Saliou Ciss,Senegal,63
+SEN6,Pape Abou Cissé,Senegal,64
+SEN7,Abdou Diallo,Senegal,65
+SEN8,Kalidou Koulibaly,Senegal,66
+SEN9,Ibrahima Mbaye,Senegal,67
+SEN10,Bouna Sarr,Senegal,68
+SEN11,Krépin Diatta,Senegal,69
+SEN12,Idrissa Gueye,Senegal,70
+SEN13,Pape Gueye,Senegal,71
+SEN14,Cheikhou Kouyaté,Senegal,72
+SEN15,Nampalys Mendy,Senegal,73
+SEN16,Boulaye Dia,Senegal,74
+SEN17,Famara Diédhiou,Senegal,75
+SEN18,Bamba Dieng,Senegal,76
+SEN19,Sadio Mané,Senegal,77
+SEN20,Ismaïla Sarr,Senegal,78
+NED1,Foto del equipo,Países Bajos,79
+NED2,Escudo,Países Bajos,80
+NED3,Justin Bijlow,Países Bajos,81
+NED4,Jasper Cillessen,Países Bajos,82
+NED5,Daley Blind,Países Bajos,83
+NED6,Matthijs de Ligt,Países Bajos,84
+NED7,Stefan de Vrij,Países Bajos,85
+NED8,Denzel Dumfries,Países Bajos,86
+NED9,Virgil van Dijk,Países Bajos,87
+NED10,Steven Berghuis,Países Bajos,88
+NED11,Frenkie de Jong,Países Bajos,89
+NED12,Ryan Gravenberch,Países Bajos,90
+NED13,Davy Klaassen,Países Bajos,91
+NED14,Teun Koopmeiners,Países Bajos,92
+NED15,Georginio Wijnaldum,Países Bajos,93
+NED16,Steven Bergwijn,Países Bajos,94
+NED17,Arnaut Danjuma,Países Bajos,95
+NED18,Memphis Depay,Países Bajos,96
+NED19,Cody Gakpo,Países Bajos,97
+NED20,Donyell Malen,Países Bajos,98
+ENG1,Foto del equipo,Inglaterra,99
+ENG2,Escudo,Inglaterra,100
+ENG3,Jordan Pickford,Inglaterra,101
+ENG4,Aaron Ramsdale,Inglaterra,102
+ENG5,Trent Alexander-Arnold,Inglaterra,103
+ENG6,Conor Coady,Inglaterra,104
+ENG7,Harry Maguire,Inglaterra,105
+ENG8,Luke Shaw,Inglaterra,106
+ENG9,John Stones,Inglaterra,107
+ENG10,Kyle Walker,Inglaterra,108
+ENG11,Jude Bellingham,Inglaterra,109
+ENG12,Jack Grealish,Inglaterra,110
+ENG13,Jordan Henderson,Inglaterra,111
+ENG14,Mason Mount,Inglaterra,112
+ENG15,Kalvin Phillips,Inglaterra,113
+ENG16,Declan Rice,Inglaterra,114
+ENG17,Phil Foden,Inglaterra,115
+ENG18,Harry Kane,Inglaterra,116
+ENG19,Bukayo Saka,Inglaterra,117
+ENG20,Raheem Sterling,Inglaterra,118
+IRN1,Foto del equipo,Irán,119
+IRN2,Escudo,Irán,120
+IRN3,Amir Abedzadeh,Irán,121
+IRN4,Alireza Beiranvand,Irán,122
+IRN5,Ehsan Hajsafi,Irán,123
+IRN6,Majid Hosseini,Irán,124
+IRN7,Hossein Kanaani,Irán,125
+IRN8,Shoja Khalilzadeh,Irán,126
+IRN9,Milad Mohammadi,Irán,127
+IRN10,Sadegh Moharrami,Irán,128
+IRN11,Omid Noorafkan,Irán,129
+IRN12,Vahid Amiri,Irán,130
+IRN13,Saeid Ezatolahi,Irán,131
+IRN14,Ali Gholizadeh,Irán,132
+IRN15,Alireza Jahanbakhsh,Irán,133
+IRN16,Ahmad Nourollahi,Irán,134
+IRN17,Karim Ansarifard,Irán,135
+IRN18,Sardar Azmoun,Irán,136
+IRN19,Saman Ghoddos,Irán,137
+IRN20,Mehdi Taremi,Irán,138
+USA1,Foto del equipo,Estados Unidos,139
+USA2,Escudo,Estados Unidos,140
+USA3,Matt Turner,Estados Unidos,141
+USA4,Zack Steffen,Estados Unidos,142
+USA5,Sergiño Dest,Estados Unidos,143
+USA6,Aaron Long,Estados Unidos,144
+USA7,Chris Richards,Estados Unidos,145
+USA8,Antonee Robinson,Estados Unidos,146
+USA9,DeAndre Yedlin,Estados Unidos,147
+USA10,Walker Zimmerman,Estados Unidos,148
+USA11,Brenden Aaronson,Estados Unidos,149
+USA12,Kellyn Acosta,Estados Unidos,150
+USA13,Tyler Adams,Estados Unidos,151
+USA14,Weston McKennie,Estados Unidos,152
+USA15,Yunus Musah,Estados Unidos,153
+USA16,Jesús Ferreira,Estados Unidos,154
+USA17,Ricardo Pepi,Estados Unidos,155
+USA18,Christian Pulisic,Estados Unidos,156
+USA19,Giovanni Reyna,Estados Unidos,157
+USA20,Timothy Weah,Estados Unidos,158
+WAL1,Foto del equipo,Gales,159
+WAL2,Escudo,Gales,160
+WAL3,Danny Ward,Gales,161
+WAL4,Wayne Hennessey,Gales,162
+WAL5,Ethan Ampadu,Gales,163
+WAL6,Ben Davies,Gales,164
+WAL7,Chris Gunter,Gales,165
+WAL8,Chris Mepham,Gales,166
+WAL9,Connor Roberts,Gales,167
+WAL10,Joe Rodon,Gales,168
+WAL11,Neco Williams,Gales,169
+WAL12,Joe Allen,Gales,170
+WAL13,Joe Morrell,Gales,171
+WAL14,Aaron Ramsey,Gales,172
+WAL15,Jonathan Williams,Gales,173
+WAL16,Harry Wilson,Gales,174
+WAL17,Gareth Bale,Gales,175
+WAL18,Daniel James,Gales,176
+WAL19,Brennan Johnson,Gales,177
+WAL20,Kieffer Moore,Gales,178
+ARG1,Foto del equipo,Argentina,179
+ARG2,Escudo,Argentina,180
+ARG3,Emiliano Martínez,Argentina,181
+ARG4,Franco Armani,Argentina,182
+ARG5,Marcos Acuña,Argentina,183
+ARG6,Nahuel Molina,Argentina,184
+ARG7,Nicolás Otamendi,Argentina,185
+ARG8,Germán Pezzella,Argentina,186
+ARG9,Cristian Romero,Argentina,187
+ARG10,Rodrigo De Paul,Argentina,188
+ARG11,Ángel Di María,Argentina,189
+ARG12,Giovani Lo Celso,Argentina,190
+ARG13,Leandro Paredes,Argentina,191
+ARG14,Guido Rodríguez,Argentina,192
+ARG15,Julián Álvarez,Argentina,193
+ARG16,Joaquín Correa,Argentina,194
+ARG17,Alejandro Gómez,Argentina,195
+ARG18,Nicolás González,Argentina,196
+ARG19,Lautaro Martínez,Argentina,197
+ARG20,Lionel Messi,Argentina,198
+KSA1,Foto del equipo,Arabia Saudita,199
+KSA2,Escudo,Arabia Saudita,200
+KSA3,Mohammed Al-Owais,Arabia Saudita,201
+KSA4,Mohammed Al-Rubaie,Arabia Saudita,202
+KSA5,Abdulelah Al-Amri,Arabia Saudita,203
+KSA6,Ali Al-Boleahi,Arabia Saudita,204
+KSA7,Mohammed Al-Burayk,Arabia Saudita,205
+KSA8,Sultan Al-Ghannam,Arabia Saudita,206
+KSA9,Yasser Al-Shahrani,Arabia Saudita,207
+KSA10,Hassan Al-Tambakti,Arabia Saudita,208
+KSA11,Abdullah Madu,Arabia Saudita,209
+KSA12,Salman Al-Faraj,Arabia Saudita,210
+KSA13,Abdulelah Al-Malki,Arabia Saudita,211
+KSA14,Sami Al-Najei,Arabia Saudita,212
+KSA15,Hattan Bahebri,Arabia Saudita,213
+KSA16,Mohamed Kanno,Arabia Saudita,214
+KSA17,Abdullah Otayf,Arabia Saudita,215
+KSA18,Firas Al-Buraikan,Arabia Saudita,216
+KSA19,Salem Al-Dawsari,Arabia Saudita,217
+KSA20,Khalid Al-Ghannam,Arabia Saudita,218
+MEX1,Foto del equipo,México,219
+MEX2,Escudo,México,220
+MEX3,Guillermo Ochoa,México,221
+MEX4,Alfredo Talavera,México,222
+MEX5,Néstor Araújo,México,223
+MEX6,Jesús Gallardo,México,224
+MEX7,César Montes,México,225
+MEX8,Héctor Moreno,México,226
+MEX9,Luis Romo,México,227
+MEX10,Jorge Sánchez,México,228
+MEX11,Edson Álvarez,México,229
+MEX12,Jesús Manuel Corona,México,230
+MEX13,Andrés Guardado,México,231
+MEX14,Érick Gutiérrez,México,232
+MEX15,Héctor Herrera,México,233
+MEX16,Diego Lainez,México,234
+MEX17,Carlos Rodríguez,México,235
+MEX18,Rogelio Funes Mori,México,236
+MEX19,Raúl Jiménez,México,237
+MEX20,Hirving Lozano,México,238
+POL1,Foto del equipo,Polonia,239
+POL2,Escudo,Polonia,240
+POL3,Wojciech Szczęsny,Polonia,241
+POL4,Łukasz Skorupski,Polonia,242
+POL5,Jan Bednarek,Polonia,243
+POL6,Bartosz Bereszyński,Polonia,244
+POL7,Matty Cash,Polonia,245
+POL8,Kamil Glik,Polonia,246
+POL9,Tymoteusz Puchacz,Polonia,247
+POL10,Maciej Rybus,Polonia,248
+POL11,Kamil Jóźwiak,Polonia,249
+POL12,Mateusz Klich,Polonia,250
+POL13,Grzegorz Krychowiak,Polonia,251
+POL14,Jakub Moder,Polonia,252
+POL15,Sebastian Szymański,Polonia,253
+POL16,Piotr Zieliński,Polonia,254
+POL17,Robert Lewandowski,Polonia,255
+POL18,Arkadiusz Milik,Polonia,256
+POL19,Krzysztof Piątek,Polonia,257
+POL20,Karol Świderski,Polonia,258
+FRA1,Foto del equipo,Francia,259
+FRA2,Escudo,Francia,260
+FRA3,Hugo Lloris,Francia,261
+FRA4,Mike Maignan,Francia,262
+FRA5,Lucas Hernández,Francia,263
+FRA6,Theo Hernández,Francia,264
+FRA7,Presnel Kimpembe,Francia,265
+FRA8,Jules Koundé,Francia,266
+FRA9,Benjamin Pavard,Francia,267
+FRA10,Raphaël Varane,Francia,268
+FRA11,N'Golo Kanté,Francia,269
+FRA12,Paul Pogba,Francia,270
+FRA13,Adrien Rabiot,Francia,271
+FRA14,Aurélien Tchouaméni,Francia,272
+FRA15,Wissam Ben Yedder,Francia,273
+FRA16,Karim Benzema,Francia,274
+FRA17,Kingsley Coman,Francia,275
+FRA18,Antoine Griezmann,Francia,276
+FRA19,Kylian Mbappé,Francia,277
+FRA20,Christopher Nkunku,Francia,278
+AUS1,Foto del equipo,Australia,279
+AUS2,Escudo,Australia,280
+AUS3,Mathew Ryan,Australia,281
+AUS4,Andrew Redmayne,Australia,282
+AUS5,Aziz Behich,Australia,283
+AUS6,Miloš Degenek,Australia,284
+AUS7,Rhyan Grant,Australia,285
+AUS8,Joel King,Australia,286
+AUS9,Trent Sainsbury,Australia,287
+AUS10,Harry Souttar,Australia,288
+AUS11,Ajdin Hrustić,Australia,289
+AUS12,Jackson Irvine,Australia,290
+AUS13,James Jeggo,Australia,291
+AUS14,Awer Mabil,Australia,292
+AUS15,Aaron Mooy,Australia,293
+AUS16,Martin Boyle,Australia,294
+AUS17,Mitchell Duke,Australia,295
+AUS18,Craig Goodwin,Australia,296
+AUS19,Mathew Leckie,Australia,297
+AUS20,Adam Taggart,Australia,298
+DEN1,Foto del equipo,Dinamarca,299
+DEN2,Escudo,Dinamarca,300
+DEN3,Kasper Schmeichel,Dinamarca,301
+DEN4,Frederik Rønnow,Dinamarca,302
+DEN5,Andreas Christensen,Dinamarca,303
+DEN6,Simon Kjær,Dinamarca,304
+DEN7,Joakim Mæhle,Dinamarca,305
+DEN8,Jens Stryger Larsen,Dinamarca,306
+DEN9,Jannik Vestergaard,Dinamarca,307
+DEN10,Mikkel Damsgaard,Dinamarca,308
+DEN11,Thomas Delaney,Dinamarca,309
+DEN12,Christian Eriksen,Dinamarca,310
+DEN13,Pierre Emile Højbjerg,Dinamarca,311
+DEN14,Christian Nørgaard,Dinamarca,312
+DEN15,Daniel Wass,Dinamarca,313
+DEN16,Martin Braithwaite,Dinamarca,314
+DEN17,Kasper Dolberg,Dinamarca,315
+DEN18,Yussuf Poulsen,Dinamarca,316
+DEN19,Andreas Skov Olsen,Dinamarca,317
+DEN20,Jonas Wind,Dinamarca,318
+TUN1,Foto del equipo,Túnez,319
+TUN2,Escudo,Túnez,320
+TUN3,Bechir Ben Saïd,Túnez,321
+TUN4,Farouk Ben Mustapha,Túnez,322
+TUN5,Dylan Bronn,Túnez,323
+TUN6,Mohamed Dräger,Túnez,324
+TUN7,Bilel Ifa,Túnez,325
+TUN8,Ali Maâloul,Túnez,326
+TUN9,Hamza Mathlouthi,Túnez,327
+TUN10,Yassine Meriah,Túnez,328
+TUN11,Montassar Talbi,Túnez,329
+TUN12,Mohamed Ali Ben Romdhane,Túnez,330
+TUN13,Wahbi Khazri,Túnez,331
+TUN14,Aïssa Laïdouni,Túnez,332
+TUN15,Ferjani Sassi,Túnez,333
+TUN16,Ellyes Skhiri,Túnez,334
+TUN17,Anis Slimane,Túnez,335
+TUN18,Seifeddine Jaziri,Túnez,336
+TUN19,Youssef Msakni,Túnez,337
+TUN20,Naïm Sliti,Túnez,338
+ESP1,Foto del equipo,España,339
+ESP2,Escudo,España,340
+ESP3,Unai Simón,España,341
+ESP4,Robert Sánchez,España,342
+ESP5,César Azpilicueta,España,343
+ESP6,Eric García,España,344
+ESP7,Jordi Alba,España,345
+ESP8,Aymeric Laporte,España,346
+ESP9,Pau Torres,España,347
+ESP10,Gavi,España,348
+ESP11,Koke,España,349
+ESP12,Marcos Llorente,España,350
+ESP13,Pedri,España,351
+ESP14,Rodri,España,352
+ESP15,Sergio Busquets,España,353
+ESP16,Dani Olmo,España,354
+ESP17,Ansu Fati,España,355
+ESP18,Ferran Torres,España,356
+ESP19,Álvaro Morata,España,357
+ESP20,Pablo Sarabia,España,358
+CRC1,Foto del equipo,Costa Rica,359
+CRC2,Escudo,Costa Rica,360
+CRC3,Keylor Navas,Costa Rica,361
+CRC4,Leonel Moreira,Costa Rica,362
+CRC5,Ricardo Blanco,Costa Rica,363
+CRC6,Francisco Calvo,Costa Rica,364
+CRC7,Óscar Duarte,Costa Rica,365
+CRC8,Keysher Fuller,Costa Rica,366
+CRC9,Bryan Oviedo,Costa Rica,367
+CRC10,Juan Pablo Vargas,Costa Rica,368
+CRC11,Kendall Waston,Costa Rica,369
+CRC12,Celso Borges,Costa Rica,370
+CRC13,Orlando Galo,Costa Rica,371
+CRC14,Bryan Ruiz,Costa Rica,372
+CRC15,Yeltsin Tejeda,Costa Rica,373
+CRC16,Jewison Bennette,Costa Rica,374
+CRC17,Joel Campbell,Costa Rica,375
+CRC18,Anthony Contreras,Costa Rica,376
+CRC19,Gerson Torres,Costa Rica,377
+CRC20,Johan Venegas,Costa Rica,378
+GER1,Foto del equipo,Alemania,379
+GER2,Escudo,Alemania,380
+GER3,Manuel Neuer,Alemania,381
+GER4,Marc-André ter Stegen,Alemania,382
+GER5,Matthias Ginter,Alemania,383
+GER6,Robin Gosens,Alemania,384
+GER7,Thilo Kehrer,Alemania,385
+GER8,David Raum,Alemania,386
+GER9,Antonio Rüdiger,Alemania,387
+GER10,Niklas Süle,Alemania,388
+GER11,Leon Goretzka,Alemania,389
+GER12,İlkay Gündoğan,Alemania,390
+GER13,Kai Havertz,Alemania,391
+GER14,Jonas Hofmann,Alemania,392
+GER15,Joshua Kimmich,Alemania,393
+GER16,Serge Gnabry,Alemania,394
+GER17,Thomas Müller,Alemania,395
+GER18,Marco Reus,Alemania,396
+GER19,Leroy Sané,Alemania,397
+GER20,Timo Werner,Alemania,398
+JPN1,Foto del equipo,Japón,399
+JPN2,Escudo,Japón,400
+JPN3,Shuichi Gonda,Japón,401
+JPN4,Eiji Kawashima,Japón,402
+JPN5,Yuto Nagatomo,Japón,403
+JPN6,Yuta Nakayama,Japón,404
+JPN7,Takehiro Tomiyasu,Japón,405
+JPN8,Miki Yamane,Japón,406
+JPN9,Maya Yoshida,Japón,407
+JPN10,Wataru Endo,Japón,408
+JPN11,Genki Haraguchi,Japón,409
+JPN12,Hidemasa Morita,Japón,410
+JPN13,Gaku Shibasaki,Japón,411
+JPN14,Ao Tanaka,Japón,412
+JPN15,Takuma Asano,Japón,413
+JPN16,Kyogo Furuhashi,Japón,414
+JPN17,Junya Ito,Japón,415
+JPN18,Takumi Minamino,Japón,416
+JPN19,Kaoru Mitoma,Japón,417
+JPN20,Yuya Osako,Japón,418
+BEL1,Foto del equipo,Bélgica,419
+BEL2,Escudo,Bélgica,420
+BEL3,Thibaut Courtois,Bélgica,421
+BEL4,Simon Mignolet,Bélgica,422
+BEL5,Toby Alderweireld,Bélgica,423
+BEL6,Timothy Castagne,Bélgica,424
+BEL7,Jason Denayer,Bélgica,425
+BEL8,Thomas Meunier,Bélgica,426
+BEL9,Jan Vertonghen,Bélgica,427
+BEL10,Yannick Carrasco,Bélgica,428
+BEL11,Kevin De Bruyne,Bélgica,429
+BEL12,Charles De Ketelaere,Bélgica,430
+BEL13,Thorgan Hazard,Bélgica,431
+BEL14,Youri Tielemans,Bélgica,432
+BEL15,Hans Vanaken,Bélgica,433
+BEL16,Axel Witsel,Bélgica,434
+BEL17,Jérémy Doku,Bélgica,435
+BEL18,Eden Hazard,Bélgica,436
+BEL19,Romelu Lukaku,Bélgica,437
+BEL20,Dries Mertens,Bélgica,438
+CAN1,Foto del equipo,Canadá,439
+CAN2,Escudo,Canadá,440
+CAN3,Milan Borjan,Canadá,441
+CAN4,Maxime Crépeau,Canadá,442
+CAN5,Samuel Adekugbe,Canadá,443
+CAN6,Doneil Henry,Canadá,444
+CAN7,Alistair Johnston,Canadá,445
+CAN8,Richie Laryea,Canadá,446
+CAN9,Kamal Miller,Canadá,447
+CAN10,Steven Vitória,Canadá,448
+CAN11,Tajon Buchanan,Canadá,449
+CAN12,Alphonso Davies,Canadá,450
+CAN13,Stephen Eustáquio,Canadá,451
+CAN14,Atiba Hutchinson,Canadá,452
+CAN15,Mark-Anthony Kaye,Canadá,453
+CAN16,Jonathan Osorio,Canadá,454
+CAN17,Samuel Piette,Canadá,455
+CAN18,Jonathan David,Canadá,456
+CAN19,David Junior Hoilett,Canadá,457
+CAN20,Cyle Larin,Canadá,458
+MAR1,Foto del equipo,Marruecos,459
+MAR2,Escudo,Marruecos,460
+MAR3,Yassine Bounou,Marruecos,461
+MAR4,Munir Mohamedi,Marruecos,462
+MAR5,Nayef Aguerd,Marruecos,463
+MAR6,Achraf Hakimi,Marruecos,464
+MAR7,Adam Masina,Marruecos,465
+MAR8,Samy Mmaee,Marruecos,466
+MAR9,Romain Saïss,Marruecos,467
+MAR10,Selim Amallah,Marruecos,468
+MAR11,Sofyan Amrabat,Marruecos,469
+MAR12,Aymen Barkok,Marruecos,470
+MAR13,Ilias Chair,Marruecos,471
+MAR14,Imrân Louza,Marruecos,472
+MAR15,Sofiane Boufal,Marruecos,473
+MAR16,Ayoub El Kaabi,Marruecos,474
+MAR17,Youssef En-Nesyri,Marruecos,475
+MAR18,Ryan Mmaee,Marruecos,476
+MAR19,Munir,Marruecos,477
+MAR20,Tarik Tissoudali,Marruecos,478
+CRO1,Foto del equipo,Croacia,479
+CRO2,Escudo,Croacia,480
+CRO3,Dominik Livaković,Croacia,481
+CRO4,Ivica Ivušić,Croacia,482
+CRO5,Duje Ćaleta-Car,Croacia,483
+CRO6,Joško Gvardiol,Croacia,484
+CRO7,Josip Juranović,Croacia,485
+CRO8,Dejan Lovren,Croacia,486
+CRO9,Borna Sosa,Croacia,487
+CRO10,Domagoj Vida,Croacia,488
+CRO11,Marcelo Brozović,Croacia,489
+CRO12,Mateo Kovačić,Croacia,490
+CRO13,Luka Modrić,Croacia,491
+CRO14,Mario Pašalić,Croacia,492
+CRO15,Ivan Perišić,Croacia,493
+CRO16,Nikola Vlašić,Croacia,494
+CRO17,Josip Brekalo,Croacia,495
+CRO18,Andrej Kramarić,Croacia,496
+CRO19,Marko Livaja,Croacia,497
+CRO20,Mislav Oršić,Croacia,498
+BRA1,Foto del equipo,Brasil,499
+BRA2,Escudo,Brasil,500
+BRA3,Alisson,Brasil,501
+BRA4,Ederson,Brasil,502
+BRA5,Alex Sandro,Brasil,503
+BRA6,Danilo,Brasil,504
+BRA7,Éder Militão,Brasil,505
+BRA8,Marquinhos,Brasil,506
+BRA9,Thiago Silva,Brasil,507
+BRA10,Casemiro,Brasil,508
+BRA11,Philippe Coutinho,Brasil,509
+BRA12,Fabinho,Brasil,510
+BRA13,Fred,Brasil,511
+BRA14,Lucas Paquetá,Brasil,512
+BRA15,Antony,Brasil,513
+BRA16,Gabriel Jesus,Brasil,514
+BRA17,Neymar Jr,Brasil,515
+BRA18,Raphinha,Brasil,516
+BRA19,Richarlison,Brasil,517
+BRA20,Vinícius Jr,Brasil,518
+SRB1,Foto del equipo,Serbia,519
+SRB2,Escudo,Serbia,520
+SRB3,Predrag Rajković,Serbia,521
+SRB4,Vanja Milinković-Savić,Serbia,522
+SRB5,Nikola Milenković,Serbia,523
+SRB6,Strahinja Pavlović,Serbia,524
+SRB7,Miloš Veljković,Serbia,525
+SRB8,Filip Đuričić,Serbia,526
+SRB9,Nemanja Gudelj,Serbia,527
+SRB10,Filip Kostić,Serbia,528
+SRB11,Darko Lazović,Serbia,529
+SRB12,Saša Lukić,Serbia,530
+SRB13,Nemanja Maksimović,Serbia,531
+SRB14,Sergej Milinković-Savić,Serbia,532
+SRB15,Nemanja Radonjić,Serbia,533
+SRB16,Andrija Živković,Serbia,534
+SRB17,Luka Jović,Serbia,535
+SRB18,Aleksandar Mitrović,Serbia,536
+SRB19,Dušan Tadić,Serbia,537
+SRB20,Dušan Vlahović,Serbia,538
+SUI1,Foto del equipo,Suiza,539
+SUI2,Escudo,Suiza,540
+SUI3,Yann Sommer,Suiza,541
+SUI4,Gregor Kobel,Suiza,542
+SUI5,Manuel Akanji,Suiza,543
+SUI6,Nico Elvedi,Suiza,544
+SUI7,Kevin Mbabu,Suiza,545
+SUI8,Ricardo Rodríguez,Suiza,546
+SUI9,Fabian Schär,Suiza,547
+SUI10,Silvan Widmer,Suiza,548
+SUI11,Remo Freuler,Suiza,549
+SUI12,Xherdan Shaqiri,Suiza,550
+SUI13,Djibril Sow,Suiza,551
+SUI14,Granit Xhaka,Suiza,552
+SUI15,Denis Zakaria,Suiza,553
+SUI16,Steven Zuber,Suiza,554
+SUI17,Breel Embolo,Suiza,555
+SUI18,Noah Okafor,Suiza,556
+SUI19,Haris Seferović,Suiza,557
+SUI20,Ruben Vargas,Suiza,558
+CMR1,Foto del equipo,Camerún,559
+CMR2,Escudo,Camerún,560
+CMR3,André Onana,Camerún,561
+CMR4,Devis Epassy,Camerún,562
+CMR5,Jean-Charles Castelletto,Camerún,563
+CMR6,Collins Fai,Camerún,564
+CMR7,Olivier Mbaizo,Camerún,565
+CMR8,Harold Moukoudi,Camerún,566
+CMR9,Michael Ngadeu,Camerún,567
+CMR10,Nouhou,Camerún,568
+CMR11,Martin Hongla,Camerún,569
+CMR12,Pierre Kunde,Camerún,570
+CMR13,James Léa Siliki,Camerún,571
+CMR14,Samuel Oum Gouet,Camerún,572
+CMR15,André-Frank Zambo Anguissa,Camerún,573
+CMR16,Vincent Aboubakar,Camerún,574
+CMR17,Stéphane Bahoken,Camerún,575
+CMR18,Eric Maxim Choupo-Moting,Camerún,576
+CMR19,Nicolas Moumi Ngamaleu,Camerún,577
+CMR20,Karl Toko Ekambi,Camerún,578
+POR1,Foto del equipo,Portugal,579
+POR2,Escudo,Portugal,580
+POR3,Diogo Costa,Portugal,581
+POR4,Rui Patrício,Portugal,582
+POR5,João Cancelo,Portugal,583
+POR6,José Fonte,Portugal,584
+POR7,Nuno Mendes,Portugal,585
+POR8,Pepe,Portugal,586
+POR9,Raphaël Guerreiro,Portugal,587
+POR10,Rúben Dias,Portugal,588
+POR11,Bernardo Silva,Portugal,589
+POR12,Bruno Fernandes,Portugal,590
+POR13,Danilo Pereira,Portugal,591
+POR14,João Moutinho,Portugal,592
+POR15,Renato Sanches,Portugal,593
+POR16,Rúben Neves,Portugal,594
+POR17,André Silva,Portugal,595
+POR18,Cristiano Ronaldo,Portugal,596
+POR19,Diogo Jota,Portugal,597
+POR20,Gonçalo Guedes,Portugal,598
+GHA1,Foto del equipo,Ghana,599
+GHA2,Escudo,Ghana,600
+GHA3,Joe Wollacott,Ghana,601
+GHA4,Richard Ofori,Ghana,602
+GHA5,Daniel Amartey,Ghana,603
+GHA6,Abdul-Rahman Baba,Ghana,604
+GHA7,Alexander Djiku,Ghana,605
+GHA8,Gideon Mensah,Ghana,606
+GHA9,Jonathan Mensah,Ghana,607
+GHA10,Andy Yiadom,Ghana,608
+GHA11,Iddrisu Baba,Ghana,609
+GHA12,Mohammed Kudus,Ghana,610
+GHA13,Daniel-Kofi Kyereh,Ghana,611
+GHA14,Thomas Partey,Ghana,612
+GHA15,Mubarak Wakaso,Ghana,613
+GHA16,Felix Afena-Gyan,Ghana,614
+GHA17,André Ayew,Ghana,615
+GHA18,Jordan Ayew,Ghana,616
+GHA19,Issahaku Abdul Fatawu,Ghana,617
+GHA20,Kamaldeen Sulemana,Ghana,618
+URU1,Foto del equipo,Uruguay,619
+URU2,Escudo,Uruguay,620
+URU3,Fernando Muslera,Uruguay,621
+URU4,Sergio Rochet,Uruguay,622
+URU5,Ronald Araújo,Uruguay,623
+URU6,Martín Cáceres,Uruguay,624
+URU7,José María Giménez,Uruguay,625
+URU8,Diego Godín,Uruguay,626
+URU9,Mathías Olivera,Uruguay,627
+URU10,Matías Viña,Uruguay,628
+URU11,Rodrigo Bentancur,Uruguay,629
+URU12,Giorgian De Arrascaeta,Uruguay,630
+URU13,Nicolás De La Cruz,Uruguay,631
+URU14,Lucas Torreira,Uruguay,632
+URU15,Federico Valverde,Uruguay,633
+URU16,Matías Vecino,Uruguay,634
+URU17,Edinson Cavani,Uruguay,635
+URU18,Darwin Núñez,Uruguay,636
+URU19,Facundo Pellistri,Uruguay,637
+URU20,Luis Suárez,Uruguay,638
+KOR1,Foto del equipo,Corea del Sur,639
+KOR2,Escudo,Corea del Sur,640
+KOR3,Seung-gyu Kim,Corea del Sur,641
+KOR4,Hyeon-woo Jo,Corea del Sur,642
+KOR5,Chul Hong,Corea del Sur,643
+KOR6,Tae-hwan Kim,Corea del Sur,644
+KOR7,Min-jae Kim,Corea del Sur,645
+KOR8,Young-gwon Kim,Corea del Sur,646
+KOR9,Jin-su Kim,Corea del Sur,647
+KOR10,Yong Lee,Corea del Sur,648
+KOR11,In-beom Hwang,Corea del Sur,649
+KOR12,Woo-young Jung,Corea del Sur,650
+KOR13,Jae-sung Lee,Corea del Sur,651
+KOR14,Seung-ho Paik,Corea del Sur,652
+KOR15,Gue-sung Cho,Corea del Sur,653
+KOR16,Hee-chan Hwang,Corea del Sur,654
+KOR17,Ui-jo Hwang,Corea del Sur,655
+KOR18,Chang-hoon Kwon,Corea del Sur,656
+KOR19,Heung-min Son,Corea del Sur,657
+KOR20,Min-kyu Song,Corea del Sur,658
+FWC19,Uruguay 1930,FIFA Museum,659
+FWC20,Italy 1938,FIFA Museum,660
+FWC21,Brazil 1958,FIFA Museum,661
+FWC22,England 1966,FIFA Museum,662
+FWC23,Brazil 1970,FIFA Museum,663
+FWC24,Argentina 1978,FIFA Museum,664
+FWC25,Italy 1982,FIFA Museum,665
+FWC26,Germany 1990,FIFA Museum,666
+FWC27,France 1998,FIFA Museum,667
+FWC28,Spain 2010,FIFA Museum,668
+FWC29,France 2018,FIFA Museum,669

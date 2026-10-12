@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { ItemActions } from "@/components/item-actions";
 import { getCurrentUser } from "@/lib/auth";
 import { getItem } from "@/lib/catalog";
-import { imageUrl } from "@/lib/images";
+import { ItemImage } from "@/components/item-image";
 import { getStatusForItems, getUsersForItem } from "@/lib/inventory";
 
 export default function ItemPage({ params }: PageProps<"/item/[id]">) {
@@ -38,11 +38,7 @@ async function ItemDetail({ params }: { params: Promise<{ id: string }> }) {
     <div className="grid gap-6 md:grid-cols-[minmax(0,320px)_1fr]">
       <div className="grid gap-3 self-start">
         <div className="card overflow-hidden">
-          <img
-            src={imageUrl(item.imageKey)}
-            alt={`${item.code} ${item.name}`}
-            className="aspect-[3/4] w-full bg-background object-contain"
-          />
+          <ItemImage code={item.code} name={item.name} section={item.section} imageKey={item.imageKey} />
         </div>
         <ItemActions itemId={id} tengo={status?.tengo} busco={status?.busco} loggedIn={!!user} />
       </div>
@@ -59,6 +55,7 @@ async function ItemDetail({ params }: { params: Promise<{ id: string }> }) {
           <h1 className="text-2xl font-bold">
             #{item.code} {item.name}
           </h1>
+          {item.section && <p className="text-muted">{item.section}</p>}
           {item.variant !== "normal" && <p className="text-accent">{item.variant}</p>}
         </div>
 

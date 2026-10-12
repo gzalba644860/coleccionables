@@ -4,7 +4,7 @@ import { updateDetails } from "@/app/actions/inventory";
 import { GridSkeleton, ItemCard, ItemGrid } from "@/components/item-card";
 import { INTENTS } from "@/db/schema";
 import { requireUser } from "@/lib/auth";
-import { imageUrl } from "@/lib/images";
+import { ItemImage } from "@/components/item-image";
 import { getUserList } from "@/lib/inventory";
 
 export default function MyCollectionPage() {
@@ -47,18 +47,13 @@ async function MyCollection() {
             {have.map((i) => (
               <li key={i.rowId} className="card flex gap-3 p-2">
                 <Link href={`/item/${i.itemId}`} className="w-16 shrink-0">
-                  <img
-                    src={imageUrl(i.imageKey)}
-                    alt={i.name}
-                    loading="lazy"
-                    className="aspect-[3/4] w-full rounded bg-background object-contain"
-                  />
+                  <ItemImage code={i.code} name={i.name} section={i.section} imageKey={i.imageKey} className="rounded" compact />
                 </Link>
                 <div className="grid flex-1 gap-2">
                   <p className="text-sm">
-                    <b>#{i.code}</b> {i.name}{" "}
+                    <b>{i.code}</b> {i.name}{" "}
                     <span className="text-muted">
-                      · {i.collectionName} · x{i.quantity}
+                      · {i.section ? `${i.section} · ` : ""}{i.collectionName} · x{i.quantity}
                     </span>
                   </p>
                   <form action={updateDetails} className="flex flex-wrap items-center gap-2">
@@ -104,7 +99,7 @@ async function MyCollection() {
             {want.map((i) => (
               <ItemCard
                 key={i.rowId}
-                item={{ id: i.itemId, code: i.code, name: i.name, imageKey: i.imageKey, subtitle: i.collectionName }}
+                item={{ id: i.itemId, code: i.code, name: i.name, section: i.section, imageKey: i.imageKey, subtitle: i.collectionName }}
                 status={{ busco: true }}
                 loggedIn
               />

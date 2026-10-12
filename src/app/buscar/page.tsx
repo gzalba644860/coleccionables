@@ -65,7 +65,7 @@ async function Results({
           {results.map((r) => (
             <ItemCard
               key={r.id}
-              item={{ ...r, subtitle: `${r.collectionName} · ${r.year}` }}
+              item={{ ...r, subtitle: [r.section, r.collectionName].filter(Boolean).join(" · ") }}
               status={status[r.id]}
               loggedIn={!!user}
             />
