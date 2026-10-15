@@ -1,11 +1,13 @@
 "use server";
 
 import { refresh } from "next/cache";
+import { after } from "next/server";
 import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
 import { INTENTS, LISTS } from "@/db/schema";
 import { requireUser } from "@/lib/auth";
+import { notifyItemMatch } from "@/lib/notifications";
 
 const { userItems } = schema;
 
@@ -33,6 +35,7 @@ export async function toggleItem(itemId: number, list: (typeof LISTS)[number]) {
           eq(userItems.list, other),
         ),
       );
+    after(() => notifyItemMatch(user.id, itemId, list).catch((e) => console.error("avisos", e)));
   }
   refresh();
 }
@@ -46,13 +49,20 @@ export async function changeQuantity(itemId: number, delta: 1 | -1) {
     eq(userItems.list, "tengo"),
   );
   if (delta > 0) {
-    await db
+    const [row] = await db
       .insert(userItems)
       .values({ userId: user.id, itemId, list: "tengo" })
       .onConflictDoUpdate({
         target: [userItems.userId, userItems.itemId, userItems.list],
         set: { quantity: sql`${userItems.quantity} + 1`, updatedAt: new Date() },
-      });
+      })
+      .returning({ quantity: userItems.quantity });
+    // Solo avisa la primera vez que lo marca, no por cada repetida.
+    if (row?.quantity === 1) {
+      after(() =>
+        notifyItemMatch(user.id, itemId, "tengo").catch((e) => console.error("avisos", e)),
+      );
+    }
   } else {
     const row = await db.select({ q: userItems.quantity }).from(userItems).where(where).get();
     if (!row) return;

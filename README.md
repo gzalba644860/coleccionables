@@ -13,7 +13,10 @@ Mobile-first, pensado para ~1000 usuarios con costo $0.
 6. **Mi colección** tiene dos pestañas arriba, **Ofrezco** y **Busco**, para saltar directo a cada lista.
 7. **Mensajes**: chat interno. Cada usuario puede crear grupos, sumar a otros usuarios buscándolos por nombre
    y chatear con todos los del grupo. Desde un perfil o desde Coincidencias, "Enviar mensaje" abre un chat 1 a 1.
-8. Los **medios de contacto** (WhatsApp, teléfono, email, Instagram, Telegram, otro) solo los ven usuarios registrados. Las fotos reales se comparten por fuera del sitio.
+8. **Avisos**: la campanita del menú avisa cuando alguien marca que tiene algo que buscás o que busca algo que tenés
+   (se agrupan por persona mientras no los leas). En `/avisos` cada usuario puede activar las **notificaciones del
+   navegador** (Web Push, gratis) para enterarse de esos avisos y de los mensajes nuevos aunque tenga el sitio cerrado.
+9. Los **medios de contacto** (WhatsApp, teléfono, email, Instagram, Telegram, otro) solo los ven usuarios registrados. Las fotos reales se comparten por fuera del sitio.
 
 ## Stack
 
@@ -38,6 +41,10 @@ El catálogo se cachea (`"use cache"` + `cacheTag("catalog")`) y se invalida cua
   (`is_direct`, con `direct_key` "idMenor:idMayor" para no duplicarlo). `last_read_id` por miembro da los no leídos.
   Sin servicios de tiempo real pagos: el chat abierto consulta mensajes nuevos cada 4 s y el contador del menú cada 30 s,
   solo mientras la pestaña está visible.
+- `notifications`: avisos de la campanita (`group_key` agrupa los no leídos de una misma persona).
+  `push_subscriptions`: dispositivos con notificaciones activadas. `app_settings`: las claves VAPID de Web Push,
+  que se generan solas la primera vez y quedan en la base (no hay que configurar nada). `PUSH_CONTACT` (opcional)
+  cambia el `mailto:` de contacto que se manda a los servicios de push.
 - `user_items`: una fila por (usuario, ítem, lista `tengo|busco`) con cantidad, intención (venta/intercambio/ambos), precio y notas. Índice `(item_id, list)` para "¿quién lo tiene?".
 
 ## Desarrollo local

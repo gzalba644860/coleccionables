@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { createGroup } from "@/app/actions/messages";
 import { ActionForm } from "@/components/action-form";
+import { PushToggle } from "@/components/push-toggle";
 import { requireUser } from "@/lib/auth";
 import { listConversations } from "@/lib/messages";
 
@@ -11,6 +12,7 @@ export default function MessagesPage() {
   return (
     <div className="grid gap-5">
       <h1 className="text-2xl font-bold">Mensajes</h1>
+      <PushToggle variant="banner" />
       <details className="card p-3">
         <summary className="cursor-pointer font-semibold">+ Crear grupo</summary>
         <ActionForm action={createGroup} submit="Crear y sumar gente" className="mt-3 grid gap-3">
