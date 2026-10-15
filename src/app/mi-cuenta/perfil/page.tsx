@@ -3,6 +3,8 @@ import { eq } from "drizzle-orm";
 import { logout } from "@/app/actions/auth";
 import { addContact, removeContact, updateProfile } from "@/app/actions/profile";
 import { ActionForm, Field } from "@/components/action-form";
+import { Avatar } from "@/components/avatar";
+import { AvatarUpload } from "@/components/avatar-upload";
 import { contactLabel } from "@/components/contact-list";
 import { db, schema } from "@/db";
 import { CONTACT_KINDS } from "@/db/schema";
@@ -21,7 +23,12 @@ async function ProfileForms() {
   const user = await requireUser();
   const [me, contacts] = await Promise.all([
     db
-      .select({ displayName: schema.users.displayName, city: schema.users.city, email: schema.users.email })
+      .select({
+        displayName: schema.users.displayName,
+        city: schema.users.city,
+        bio: schema.users.bio,
+        email: schema.users.email,
+      })
       .from(schema.users)
       .where(eq(schema.users.id, user.id))
       .get(),
@@ -31,11 +38,28 @@ async function ProfileForms() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <section className="card grid content-start gap-3 p-4">
-        <h2 className="font-semibold">Perfil</h2>
-        <p className="text-xs text-muted">Cuenta: {me?.email}</p>
-        <ActionForm action={updateProfile} submit="Guardar perfil">
+        <h2 className="font-semibold">Mis datos</h2>
+        <div className="flex items-center gap-4">
+          <Avatar user={user} size={72} />
+          <div className="grid gap-1">
+            <p className="text-xs text-muted">Cuenta: {me?.email}</p>
+            <AvatarUpload hasPhoto={user.avatarVersion > 0} />
+          </div>
+        </div>
+        <ActionForm action={updateProfile} submit="Guardar datos">
           <Field label="Nombre o apodo" name="displayName" defaultValue={me?.displayName} required />
           <Field label="Ciudad / barrio" name="city" defaultValue={me?.city ?? ""} />
+          <label className="grid gap-1 text-sm">
+            <span className="text-muted">Sobre mí (opcional)</span>
+            <textarea
+              name="bio"
+              rows={3}
+              maxLength={300}
+              defaultValue={me?.bio ?? ""}
+              placeholder="Qué colecciono, por dónde me muevo, cómo prefiero intercambiar…"
+              className="input"
+            />
+          </label>
         </ActionForm>
         <form action={logout}>
           <button className="btn-ghost w-full">Cerrar sesión</button>

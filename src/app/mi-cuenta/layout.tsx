@@ -3,7 +3,7 @@ import Link from "next/link";
 const TABS = [
   { href: "/mi-cuenta", label: "Mi colección" },
   { href: "/mi-cuenta/coincidencias", label: "Coincidencias" },
-  { href: "/mi-cuenta/perfil", label: "Perfil y contacto" },
+  { href: "/mi-cuenta/perfil", label: "Mis datos" },
 ] as const;
 
 export default function AccountLayout({ children }: LayoutProps<"/mi-cuenta">) {

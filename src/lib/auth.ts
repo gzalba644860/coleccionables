@@ -70,6 +70,7 @@ export type CurrentUser = {
   displayName: string;
   role: "user" | "admin";
   status: "pending" | "approved" | "rejected";
+  avatarVersion: number;
 };
 
 /** Usuario con sesión, aprobado o no (deduplicado por request). Lee cookies: usar detrás de <Suspense>. */
@@ -82,6 +83,7 @@ export const getSessionUser = cache(async (): Promise<CurrentUser | null> => {
       displayName: schema.users.displayName,
       role: schema.users.role,
       status: schema.users.status,
+      avatarVersion: schema.users.avatarVersion,
       expiresAt: schema.sessions.expiresAt,
     })
     .from(schema.sessions)
@@ -89,7 +91,13 @@ export const getSessionUser = cache(async (): Promise<CurrentUser | null> => {
     .where(eq(schema.sessions.id, sha256(token)))
     .get();
   if (!row || row.expiresAt.getTime() < Date.now()) return null;
-  return { id: row.id, displayName: row.displayName, role: row.role, status: row.status };
+  return {
+    id: row.id,
+    displayName: row.displayName,
+    role: row.role,
+    status: row.status,
+    avatarVersion: row.avatarVersion,
+  };
 });
 
 /** Usuario logueado y aprobado por un admin, o null. Las cuentas pendientes no usan el portal. */

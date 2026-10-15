@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { openDirect } from "@/app/actions/messages";
+import { Avatar } from "@/components/avatar";
 import { ContactList } from "@/components/contact-list";
 import { GridSkeleton, ItemCard, ItemGrid } from "@/components/item-card";
 import { getCurrentUser } from "@/lib/auth";
@@ -48,11 +49,15 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
   return (
     <div className="grid gap-8">
       <div className="card grid gap-4 p-4 sm:grid-cols-2">
-        <div>
-          <h1 className="text-2xl font-bold">{profile.displayName}</h1>
-          <p className="text-sm text-muted">
-            {profile.city ?? "Sin ubicación"} · {have.length} para ofrecer · {want.length} buscados
-          </p>
+        <div className="flex gap-4">
+          <Avatar user={profile} size={64} />
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold">{profile.displayName}</h1>
+            <p className="text-sm text-muted">
+              {profile.city ?? "Sin ubicación"} · {have.length} para ofrecer · {want.length} buscados
+            </p>
+            {profile.bio && <p className="mt-2 whitespace-pre-line text-sm">{profile.bio}</p>}
+          </div>
         </div>
         <div>
           <h2 className="mb-2 text-sm font-semibold">Contacto</h2>
