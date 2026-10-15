@@ -40,7 +40,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6">{children}</main>
         <footer className="border-t border-border py-6 text-center text-xs text-muted">
           Las fotos del catálogo son ilustrativas. Las fotos reales se comparten entre
-          usuarios por fuera del sitio.
+          usuarios por fuera del sitio.{" "}
+          <Link href="/privacidad" className="underline">
+            Privacidad
+          </Link>
         </footer>
       </body>
     </html>
