@@ -127,3 +127,14 @@ export async function revokeAdmin(formData: FormData) {
   await db.update(schema.users).set({ role: "user" }).where(eq(schema.users.id, userId));
   revalidatePath("/admin");
 }
+
+/** Da el rol de admin a otra cuenta (y la aprueba si estaba pendiente). */
+export async function grantAdmin(formData: FormData) {
+  await requireAdmin();
+  const userId = z.coerce.number().int().positive().parse(formData.get("userId"));
+  await db
+    .update(schema.users)
+    .set({ role: "admin", status: "approved" })
+    .where(eq(schema.users.id, userId));
+  revalidatePath("/admin");
+}
