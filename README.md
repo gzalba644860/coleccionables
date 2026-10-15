@@ -52,6 +52,8 @@ npm run dev
 Usuarios demo: `admin@demo.com` (admin), `lucia@demo.com`, `martin@demo.com`.
 En una base vacía, **el primer usuario que se registra queda como admin**.
 
+**Login con Google** (opcional): con `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET` aparece el botón "Entrar con Google" en `/ingresar` y `/registro`. La URL de redirección autorizada en Google Cloud es `<url del sitio>/auth/google/callback`. Si el email ya tiene cuenta, se vincula a esa cuenta.
+
 ## Carga del catálogo
 
 En `/admin` (solo admin): crear tipos, marcas, colecciones y cargar ítems en bloque
