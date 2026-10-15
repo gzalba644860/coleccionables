@@ -10,6 +10,7 @@ import {
   hashPassword,
   verifyPassword,
 } from "@/lib/auth";
+import { isAdminEmail } from "@/lib/admins";
 
 export type FormState = { error?: string; ok?: string } | undefined;
 
@@ -32,8 +33,10 @@ export async function register(_: FormState, formData: FormData): Promise<FormSt
     .get();
   if (exists) return { error: "Ya existe una cuenta con ese email" };
 
-  // El primer usuario registrado queda como administrador del catálogo.
-  const first = !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
+  // El primer usuario registrado (o un email de ADMIN_EMAIL) queda como administrador.
+  const asAdmin =
+    isAdminEmail(email) ||
+    !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
 
   const [user] = await db
     .insert(schema.users)
@@ -42,13 +45,13 @@ export async function register(_: FormState, formData: FormData): Promise<FormSt
       email,
       city: city || null,
       passwordHash: await hashPassword(password),
-      role: first ? "admin" : "user",
-      status: first ? "approved" : "pending",
+      role: asAdmin ? "admin" : "user",
+      status: asAdmin ? "approved" : "pending",
     })
     .returning({ id: schema.users.id });
 
   await createSession(user.id);
-  redirect(first ? "/mi-cuenta/perfil" : "/pendiente");
+  redirect(asAdmin ? "/mi-cuenta/perfil" : "/pendiente");
 }
 
 const loginSchema = z.object({
