@@ -88,7 +88,7 @@ export function BottomNavLinks({ loggedIn }: { loggedIn: boolean }) {
                     >
                       {ICONS[t.icon]}
                     </svg>
-                    {t.badge && <UnreadBadge initial={0} />}
+                    {t.badge && <UnreadBadge kind="mensajes" initial={0} />}
                   </span>
                   {t.label}
                   {active && <span className="absolute top-0 h-0.5 w-8 rounded-full bg-accent" />}

@@ -241,3 +241,91 @@ export const messages = sqliteTable(
   },
   (t) => [index("messages_conv_id_idx").on(t.conversationId, t.id)],
 );
+
+/* ───────────────────────── Reputación ─────────────────────────
+ * Después de un intercambio, cada parte califica a la otra (1 a 5
+ * estrellas y un comentario). Una calificación por par de usuarios:
+ * si vuelven a cambiar, la actualizan. Solo puede calificar quien
+ * tuvo un chat directo con mensajes de los dos lados.
+ */
+
+export const ratings = sqliteTable(
+  "ratings",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    raterId: integer("rater_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    ratedId: integer("rated_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    stars: integer("stars").notNull(),
+    comment: text("comment"),
+    ...timestamps,
+    updatedAt: integer("updated_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(unixepoch())`),
+  },
+  (t) => [
+    uniqueIndex("ratings_rater_rated_uq").on(t.raterId, t.ratedId),
+    index("ratings_rated_idx").on(t.ratedId, t.updatedAt),
+  ],
+);
+
+/* ───────────────────────── Avisos ─────────────────────────
+ * Avisos dentro del sitio (campanita) y suscripciones a notificaciones
+ * del navegador (Web Push, gratis). Los avisos parecidos se agrupan:
+ * mientras uno no se leyó, uno nuevo con la misma group_key lo
+ * actualiza (count + 1) en vez de sumar otra fila.
+ */
+
+export const NOTIFICATION_KINDS = ["coincidencia", "interesado"] as const;
+export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
+
+export const notifications = sqliteTable(
+  "notifications",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    kind: text("kind", { enum: NOTIFICATION_KINDS }).notNull(),
+    /** Quién lo generó (el otro coleccionista). */
+    actorId: integer("actor_id").references(() => users.id, { onDelete: "cascade" }),
+    groupKey: text("group_key").notNull(),
+    count: integer("count").notNull().default(1),
+    /** Último ítem que lo disparó, para el texto ("Messi", "ARG 17"). */
+    detail: text("detail"),
+    href: text("href").notNull(),
+    readAt: integer("read_at", { mode: "timestamp" }),
+    updatedAt: integer("updated_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(unixepoch())`),
+    ...timestamps,
+  },
+  (t) => [
+    index("notifications_user_updated_idx").on(t.userId, t.updatedAt),
+    index("notifications_user_group_idx").on(t.userId, t.groupKey),
+  ],
+);
+
+export const pushSubscriptions = sqliteTable(
+  "push_subscriptions",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    endpoint: text("endpoint").notNull().unique(),
+    p256dh: text("p256dh").notNull(),
+    auth: text("auth").notNull(),
+    ...timestamps,
+  },
+  (t) => [index("push_subscriptions_user_idx").on(t.userId)],
+);
+
+/** Valores internos del sitio (p.ej. las claves VAPID, generadas una vez). */
+export const appSettings = sqliteTable("app_settings", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+});

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { getSessionUser } from "@/lib/auth";
 import { countUnread } from "@/lib/messages";
+import { countUnreadNotifications } from "@/lib/notifications";
 import { AccountMenu } from "./account-menu";
 import { Avatar } from "./avatar";
 import { UnreadBadge } from "./unread-badge";
@@ -27,7 +28,10 @@ export async function UserNav() {
       </Link>
     );
   }
-  const unread = await countUnread(user.id);
+  const [unread, avisos] = await Promise.all([
+    countUnread(user.id),
+    countUnreadNotifications(user.id),
+  ]);
   return (
     <>
       {user.role === "admin" && (
@@ -41,7 +45,19 @@ export async function UserNav() {
         className="relative rounded-lg px-3 py-2 text-muted hover:bg-subtle hover:text-foreground max-sm:hidden"
       >
         Mensajes
-        <UnreadBadge initial={unread} />
+        <UnreadBadge kind="mensajes" initial={unread} />
+      </Link>
+      <Link
+        href="/avisos"
+        aria-label="Avisos"
+        title="Avisos"
+        className="relative grid size-10 place-items-center rounded-full text-muted hover:bg-subtle hover:text-foreground"
+      >
+        <svg viewBox="0 0 24 24" className="size-[22px]" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden>
+          <path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9" strokeLinejoin="round" />
+          <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" strokeLinecap="round" />
+        </svg>
+        <UnreadBadge kind="avisos" initial={avisos} />
       </Link>
       <Link href="/mi-cuenta" className="btn-primary ml-1 whitespace-nowrap !px-3.5 !py-2 max-sm:hidden">
         Mi colección
@@ -64,6 +80,9 @@ export async function UserNav() {
         </Link>
         <Link href="/mi-cuenta/perfil" className="menu-item">
           Mis datos y foto
+        </Link>
+        <Link href="/avisos" className="menu-item">
+          Avisos y notificaciones
         </Link>
         {user.role === "admin" && (
           <Link href="/admin" className="menu-item">

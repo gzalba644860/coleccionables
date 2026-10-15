@@ -40,7 +40,7 @@ export function ItemCard({
                 status.tengo ? "bg-have" : "bg-want"
               }`}
             >
-              {status.tengo ? (status.tengo > 1 ? `Tengo ×${status.tengo}` : "Tengo") : "Busco"}
+              {status.tengo ? "La tenés" : "La buscás"}
             </span>
           )}
         </div>

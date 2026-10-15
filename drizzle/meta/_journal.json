@@ -36,6 +36,20 @@
       "when": 1792073109248,
       "tag": "0004_perfil_foto",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1792088235251,
+      "tag": "0005_reputacion",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792088666197,
+      "tag": "0006_avisos",
+      "breakpoints": true
     }
   ]
 }
