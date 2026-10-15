@@ -165,6 +165,8 @@ export async function getPublicProfile(userId: number) {
       id: users.id,
       displayName: users.displayName,
       city: users.city,
+      bio: users.bio,
+      avatarVersion: users.avatarVersion,
       createdAt: users.createdAt,
     })
     .from(users)

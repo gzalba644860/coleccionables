@@ -93,6 +93,11 @@ export const users = sqliteTable("users", {
   passwordHash: text("password_hash").notNull(),
   displayName: text("display_name").notNull(),
   city: text("city"),
+  /** "Sobre mí" del perfil público. */
+  bio: text("bio"),
+  /** Foto de perfil chica (data URL webp/jpeg, ~20 KB). avatar_version: ms de la última subida (0 = sin foto), va en la URL para la caché. */
+  avatar: text("avatar"),
+  avatarVersion: integer("avatar_version").notNull().default(0),
   role: text("role", { enum: ["user", "admin"] }).notNull().default("user"),
   /** Las cuentas nuevas quedan "pending" hasta que un admin las apruebe (se setea al crearlas). */
   status: text("status", { enum: ["pending", "approved", "rejected"] })

@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { logout } from "@/app/actions/auth";
 import { getSessionUser } from "@/lib/auth";
 import { countUnread } from "@/lib/messages";
+import { AccountMenu } from "./account-menu";
+import { Avatar } from "./avatar";
 import { UnreadBadge } from "./unread-badge";
 
 export async function UserNav() {
@@ -38,9 +41,26 @@ export async function UserNav() {
         </svg>
         <UnreadBadge initial={unread} />
       </Link>
-      <Link href="/mi-cuenta" className="btn-primary whitespace-nowrap !px-3 !py-2">
+      <Link href="/mi-cuenta" className="btn-primary whitespace-nowrap !px-3 !py-2 max-sm:hidden">
         Mi colección
       </Link>
+      <AccountMenu trigger={<Avatar user={user} size={34} />}>
+        <p className="truncate px-3 py-1 font-semibold">{user.displayName}</p>
+        <Link href="/mi-cuenta" className="rounded-lg px-3 py-2 hover:bg-background">
+          Mi colección
+        </Link>
+        <Link href="/mi-cuenta/perfil" className="rounded-lg px-3 py-2 hover:bg-background">
+          Mis datos y foto
+        </Link>
+        <Link href={`/usuario/${user.id}`} className="rounded-lg px-3 py-2 hover:bg-background">
+          Ver mi perfil público
+        </Link>
+        <form action={logout}>
+          <button className="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-background">
+            Cerrar sesión
+          </button>
+        </form>
+      </AccountMenu>
     </>
   );
 }

@@ -11,18 +11,48 @@ import type { FormState } from "./auth";
 const profileSchema = z.object({
   displayName: z.string().trim().min(2).max(40),
   city: z.string().trim().max(60).optional(),
+  bio: z.string().trim().max(300).optional(),
 });
 
 export async function updateProfile(_: FormState, formData: FormData): Promise<FormState> {
   const user = await requireUser();
   const parsed = profileSchema.safeParse(Object.fromEntries(formData));
-  if (!parsed.success) return { error: "Revisá el nombre (2 a 40 caracteres)" };
+  if (!parsed.success) return { error: "Revisá el nombre (2 a 40 caracteres) y el texto (hasta 300)" };
   await db
     .update(schema.users)
-    .set({ displayName: parsed.data.displayName, city: parsed.data.city || null })
+    .set({
+      displayName: parsed.data.displayName,
+      city: parsed.data.city || null,
+      bio: parsed.data.bio || null,
+    })
     .where(eq(schema.users.id, user.id));
   refresh();
   return { ok: "Perfil guardado" };
+}
+
+/** Recibe la foto ya achicada en el navegador (data URL de ~20 KB). */
+const avatarSchema = z
+  .string()
+  .max(300_000)
+  .regex(/^data:image\/(webp|jpeg|png);base64,[A-Za-z0-9+/=]+$/);
+
+export async function saveAvatar(dataUrl: string): Promise<FormState> {
+  const user = await requireUser();
+  if (!avatarSchema.safeParse(dataUrl).success) return { error: "La imagen no es válida" };
+  await db
+    .update(schema.users)
+    .set({ avatar: dataUrl, avatarVersion: Date.now() })
+    .where(eq(schema.users.id, user.id));
+  refresh();
+}
+
+export async function removeAvatar() {
+  const user = await requireUser();
+  await db
+    .update(schema.users)
+    .set({ avatar: null, avatarVersion: 0 })
+    .where(eq(schema.users.id, user.id));
+  refresh();
 }
 
 const contactSchema = z.object({

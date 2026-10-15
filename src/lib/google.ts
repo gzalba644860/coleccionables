@@ -25,7 +25,7 @@ export function googleAuthUrl(origin: string, state: string) {
   return `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
 }
 
-type GoogleProfile = { email: string; name: string };
+type GoogleProfile = { email: string; name: string; picture?: string };
 
 /** Canjea el código por el id_token y devuelve email (verificado) y nombre. */
 export async function googleProfile(origin: string, code: string): Promise<GoogleProfile | null> {
@@ -52,6 +52,7 @@ export async function googleProfile(origin: string, code: string): Promise<Googl
     email?: string;
     email_verified?: boolean;
     name?: string;
+    picture?: string;
   };
   if (
     claims.aud !== process.env.GOOGLE_CLIENT_ID ||
@@ -61,11 +62,26 @@ export async function googleProfile(origin: string, code: string): Promise<Googl
   ) {
     return null;
   }
-  return { email: claims.email.toLowerCase(), name: claims.name ?? "" };
+  return { email: claims.email.toLowerCase(), name: claims.name ?? "", picture: claims.picture };
 }
 
 /** Busca la cuenta por email (la vincula si ya existe) o crea una nueva, pendiente de aprobación. */
-export async function findOrCreateGoogleUser({ email, name }: GoogleProfile) {
+/** Baja la foto de Google en 256 px como data URL; si falla, la cuenta queda sin foto. */
+async function googlePicture(url: string | undefined) {
+  if (!url?.startsWith("https://")) return null;
+  try {
+    const res = await fetch(url.replace(/=s\d+-c$/, "=s256-c"), { cache: "no-store" });
+    const type = res.headers.get("content-type") ?? "";
+    if (!res.ok || !/^image\/(webp|jpeg|png)$/.test(type)) return null;
+    const bytes = Buffer.from(await res.arrayBuffer());
+    if (bytes.length > 200_000) return null;
+    return `data:${type};base64,${bytes.toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
+export async function findOrCreateGoogleUser({ email, name, picture }: GoogleProfile) {
   const existing = await db
     .select({ id: schema.users.id, status: schema.users.status })
     .from(schema.users)
@@ -78,6 +94,7 @@ export async function findOrCreateGoogleUser({ email, name }: GoogleProfile) {
 
   // Igual que en el registro: el primer usuario queda como administrador.
   const first = !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
+  const avatar = await googlePicture(picture);
   const [user] = await db
     .insert(schema.users)
     .values({
@@ -86,6 +103,8 @@ export async function findOrCreateGoogleUser({ email, name }: GoogleProfile) {
       passwordHash: NO_PASSWORD,
       role: first ? "admin" : "user",
       status: first ? "approved" : "pending",
+      avatar,
+      avatarVersion: avatar ? Date.now() : 0,
     })
     .returning({ id: schema.users.id });
   return { id: user.id, created: true, approved: first };
