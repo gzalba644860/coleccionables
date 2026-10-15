@@ -22,12 +22,12 @@ export function AccountMenu({
     <details ref={ref} className="relative">
       <summary
         aria-label="Mi cuenta"
-        className="ml-1 flex cursor-pointer list-none items-center rounded-full p-0.5 hover:bg-background [&::-webkit-details-marker]:hidden"
+        className="ml-1 flex cursor-pointer list-none items-center rounded-full p-0.5 ring-accent/30 transition hover:ring-4 [&::-webkit-details-marker]:hidden"
       >
         {trigger}
       </summary>
       <div
-        className="card absolute right-0 top-full z-30 mt-2 grid w-52 gap-1 p-2 text-sm shadow-lg"
+        className="card absolute right-0 top-full z-30 mt-2 grid w-64 gap-0.5 p-2 text-sm !shadow-lift"
         onClick={(e) => {
           if ((e.target as HTMLElement).closest("a,button")) ref.current!.open = false;
         }}

@@ -47,7 +47,7 @@ export function ContactList({
           <li key={c.id} className="flex items-center justify-between gap-3 text-sm">
             <span className="text-muted">{LABEL[c.kind]}</span>
             {link ? (
-              <a href={link} target="_blank" rel="noopener noreferrer" className="font-medium text-accent underline">
+              <a href={link} target="_blank" rel="noopener noreferrer" className="link">
                 {c.value}
               </a>
             ) : (

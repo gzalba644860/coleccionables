@@ -13,14 +13,20 @@ export function Avatar({
         src={`/avatar/${user.id}?v=${user.avatarVersion}`}
         alt=""
         style={style}
-        className="shrink-0 rounded-full border border-border bg-background object-cover"
+        className="shrink-0 rounded-full border border-border bg-subtle object-cover"
       />
     );
   }
+  // Color estable por usuario, para distinguir a la gente sin foto.
+  const hue = (user.id * 47) % 360;
   return (
     <span
-      style={{ ...style, fontSize: size * 0.45 }}
-      className="grid shrink-0 place-items-center rounded-full bg-accent font-semibold text-accent-fg"
+      style={{
+        ...style,
+        fontSize: size * 0.42,
+        background: `linear-gradient(135deg, hsl(${hue} 70% 58%), hsl(${(hue + 30) % 360} 65% 42%))`,
+      }}
+      className="grid shrink-0 place-items-center rounded-full font-bold text-white"
       aria-hidden
     >
       {user.displayName.trim().charAt(0).toUpperCase() || "?"}

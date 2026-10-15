@@ -11,6 +11,7 @@ export async function getUsersForItem(itemId: number, list: List) {
     .select({
       userId: users.id,
       displayName: users.displayName,
+      avatarVersion: users.avatarVersion,
       city: users.city,
       quantity: userItems.quantity,
       intent: userItems.intent,

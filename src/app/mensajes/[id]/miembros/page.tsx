@@ -90,7 +90,7 @@ async function Members({
       </section>
 
       <form action={leaveConversation.bind(null, id)}>
-        <button className="btn-ghost text-red-600">
+        <button className="btn-ghost text-danger">
           {conv.isDirect ? "Borrar de mis mensajes" : "Salir del grupo"}
         </button>
       </form>

@@ -19,8 +19,10 @@ export function ActionForm({
   return (
     <form action={formAction} className={className}>
       {children}
-      {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
-      {state?.ok && <p className="text-sm text-have">{state.ok}</p>}
+      {state?.error && (
+        <p className="rounded-lg bg-danger/10 px-3 py-2 text-sm text-danger">{state.error}</p>
+      )}
+      {state?.ok && <p className="rounded-lg bg-have-soft px-3 py-2 text-sm text-have">{state.ok}</p>}
       <button className="btn-primary" disabled={pending}>
         {pending ? "Enviando…" : submit}
       </button>
@@ -34,7 +36,7 @@ export function Field({
 }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="grid gap-1 text-sm">
-      <span className="text-muted">{label}</span>
+      <span className="text-xs font-semibold text-muted">{label}</span>
       <input className="input" {...props} />
     </label>
   );
