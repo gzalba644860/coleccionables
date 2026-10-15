@@ -74,10 +74,12 @@ tal cual (por ejemplo `rclone copy public/catalogo r2:<bucket>`) y se define
 
 ## Deploy gratis
 
-1. **Turso**: `turso db create coleccionables`, luego `turso db show coleccionables --url` y `turso db tokens create coleccionables`.
-2. Aplicar migraciones contra Turso: `TURSO_DATABASE_URL=... TURSO_AUTH_TOKEN=... npm run db:migrate`.
-3. **Cloudflare R2**: crear bucket, habilitar acceso público (dominio r2.dev o propio) y subir las imágenes.
-4. **Vercel**: importar el repo y configurar las variables de `.env.example`.
+1. **Turso**: crear la base `coleccionables` y copiar su URL y un token.
+2. **Vercel**: importar el repo y cargar `TURSO_DATABASE_URL` y `TURSO_AUTH_TOKEN`.
+   El script `vercel-build` aplica las migraciones y carga/actualiza el catálogo en Turso
+   antes de cada build, así que cada push a `main` deja la base al día sola.
+   No carga usuarios demo: el primero que se registra queda como admin.
+3. **Cloudflare R2** (opcional, más adelante): subir `public/catalogo` y definir `NEXT_PUBLIC_IMAGES_BASE_URL`.
 
 Cambios de esquema: editar `src/db/schema.ts`, `npm run db:generate`, `npm run db:migrate`.
 
