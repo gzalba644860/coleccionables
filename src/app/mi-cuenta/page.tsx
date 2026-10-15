@@ -7,6 +7,7 @@ import { requireUser } from "@/lib/auth";
 import { ItemImage } from "@/components/item-image";
 import { getUserList } from "@/lib/inventory";
 import { ListTabs } from "@/components/list-tabs";
+import { PushToggle } from "@/components/push-toggle";
 import { ShareList } from "@/components/share-list";
 import { buildShareText, siteOrigin } from "@/lib/share";
 
@@ -35,6 +36,7 @@ async function MyCollection({
 
   return (
     <div className="grid gap-5">
+      <PushToggle variant="banner" />
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Hola, {user.displayName}</h1>
         <div className="flex gap-2">

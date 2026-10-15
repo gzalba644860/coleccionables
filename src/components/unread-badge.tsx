@@ -1,35 +1,62 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
-import { pollUnread } from "@/app/actions/messages";
+import { pollCounts } from "@/app/actions/notifications";
 
 const POLL_MS = 30_000;
 
-/** Contador de mensajes sin leer; se actualiza al navegar y cada 30 s. */
-export function UnreadBadge({ initial }: { initial: number }) {
-  const [count, setCount] = useState(initial);
+type Counts = { mensajes: number; avisos: number };
+
+/* Una sola consulta compartida por todos los globitos del menú. */
+let counts: Counts | null = null;
+const listeners = new Set<() => void>();
+let inflight: Promise<void> | null = null;
+
+/** Vuelve a consultar los contadores (p.ej. después de marcar avisos como leídos). */
+export function refreshCounts() {
+  if (document.visibilityState !== "visible") return;
+  inflight ??= pollCounts()
+    .then((c) => {
+      counts = c;
+      listeners.forEach((l) => l());
+    })
+    .catch(() => {})
+    .finally(() => {
+      inflight = null;
+    });
+}
+
+function subscribe(l: () => void) {
+  listeners.add(l);
+  return () => listeners.delete(l);
+}
+
+/** Globito con la cantidad sin leer; se actualiza al navegar y cada 30 s. */
+export function UnreadBadge({ kind, initial }: { kind: keyof Counts; initial: number }) {
+  const live = useSyncExternalStore(
+    subscribe,
+    () => counts?.[kind],
+    () => undefined,
+  );
+  const [first] = useState(initial);
   const pathname = usePathname();
 
   useEffect(() => {
-    let alive = true;
-    const tick = () => {
-      if (document.visibilityState !== "visible") return;
-      pollUnread()
-        .then((n) => alive && setCount(n))
-        .catch(() => {});
-    };
-    tick();
-    const id = setInterval(tick, POLL_MS);
+    refreshCounts();
+    const id = setInterval(refreshCounts, POLL_MS);
+    const onFocus = () => refreshCounts();
+    document.addEventListener("visibilitychange", onFocus);
     return () => {
-      alive = false;
       clearInterval(id);
+      document.removeEventListener("visibilitychange", onFocus);
     };
   }, [pathname]);
 
+  const count = live ?? first;
   if (!count) return null;
   return (
-    <span className="absolute -right-1 -top-1 min-w-5 rounded-full bg-accent px-1.5 text-center text-[11px] font-bold leading-5 text-accent-fg">
+    <span className="absolute -right-1 -top-1 min-w-5 rounded-full bg-accent px-1.5 text-center text-[11px] font-bold leading-5 text-accent-fg ring-2 ring-card">
       {count > 99 ? "99+" : count}
     </span>
   );

@@ -2,17 +2,18 @@
 
 import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
 import { requireUser } from "@/lib/auth";
 import {
-  countUnread,
   getMessages,
   isMember,
   markRead,
   type ChatMessage,
 } from "@/lib/messages";
+import { sendPush } from "@/lib/push";
 import type { FormState } from "./auth";
 
 const { conversations, conversationMembers, messages, users } = schema;
@@ -98,10 +99,38 @@ export async function sendMessage(
     .update(conversations)
     .set({ lastMessageAt: new Date() })
     .where(eq(conversations.id, conversationId));
+  after(() =>
+    pushNewMessage(conversationId, user.id, user.displayName, body.data).catch((e) =>
+      console.error("avisos", e),
+    ),
+  );
   // Devuelve también lo que llegó mientras tanto.
   const fresh = await getMessages(conversationId, afterId);
   if (fresh.length) await markRead(conversationId, user.id, fresh.at(-1)!.id);
   return fresh;
+}
+
+/** Notificación del navegador a los demás miembros del chat. */
+async function pushNewMessage(conversationId: number, fromId: number, fromName: string, text: string) {
+  const [conv, members] = await Promise.all([
+    db
+      .select({ name: conversations.name })
+      .from(conversations)
+      .where(eq(conversations.id, conversationId))
+      .get(),
+    db
+      .select({ userId: conversationMembers.userId })
+      .from(conversationMembers)
+      .where(eq(conversationMembers.conversationId, conversationId)),
+  ]);
+  const to = members.map((m) => m.userId).filter((id) => id !== fromId);
+  const preview = text.length > 120 ? `${text.slice(0, 117)}…` : text;
+  await sendPush(to, {
+    title: conv?.name ? `${fromName} en ${conv.name}` : `Mensaje de ${fromName}`,
+    body: preview,
+    url: `/mensajes/${conversationId}`,
+    tag: `chat-${conversationId}`,
+  });
 }
 
 /** Consulta periódica del chat abierto: mensajes nuevos y los marca como leídos. */
@@ -111,11 +140,6 @@ export async function pollMessages(conversationId: number, afterId: number) {
   const fresh = await getMessages(conversationId, afterId);
   if (fresh.length) await markRead(conversationId, user.id, fresh.at(-1)!.id);
   return fresh;
-}
-
-export async function pollUnread() {
-  const user = await requireUser();
-  return countUnread(user.id);
 }
 
 export async function addMember(conversationId: number, userId: number) {
