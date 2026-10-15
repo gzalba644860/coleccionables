@@ -43,11 +43,12 @@ export async function register(_: FormState, formData: FormData): Promise<FormSt
       city: city || null,
       passwordHash: await hashPassword(password),
       role: first ? "admin" : "user",
+      status: first ? "approved" : "pending",
     })
     .returning({ id: schema.users.id });
 
   await createSession(user.id);
-  redirect("/mi-cuenta/perfil");
+  redirect(first ? "/mi-cuenta/perfil" : "/pendiente");
 }
 
 const loginSchema = z.object({

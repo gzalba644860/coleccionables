@@ -22,6 +22,13 @@
       "when": 1792065437901,
       "tag": "0002_mensajes",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792070130006,
+      "tag": "0003_usuarios_aprobacion",
+      "breakpoints": true
     }
   ]
 }

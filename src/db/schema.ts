@@ -94,6 +94,10 @@ export const users = sqliteTable("users", {
   displayName: text("display_name").notNull(),
   city: text("city"),
   role: text("role", { enum: ["user", "admin"] }).notNull().default("user"),
+  /** Las cuentas nuevas quedan "pending" hasta que un admin las apruebe (se setea al crearlas). */
+  status: text("status", { enum: ["pending", "approved", "rejected"] })
+    .notNull()
+    .default("approved"),
   ...timestamps,
 });
 

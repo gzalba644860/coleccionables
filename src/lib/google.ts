@@ -64,14 +64,14 @@ export async function googleProfile(origin: string, code: string): Promise<Googl
   return { email: claims.email.toLowerCase(), name: claims.name ?? "" };
 }
 
-/** Busca la cuenta por email (la vincula si ya existe) o crea una nueva. */
+/** Busca la cuenta por email (la vincula si ya existe) o crea una nueva, pendiente de aprobación. */
 export async function findOrCreateGoogleUser({ email, name }: GoogleProfile) {
   const existing = await db
-    .select({ id: schema.users.id })
+    .select({ id: schema.users.id, status: schema.users.status })
     .from(schema.users)
     .where(eq(schema.users.email, email))
     .get();
-  if (existing) return { id: existing.id, created: false };
+  if (existing) return { id: existing.id, created: false, approved: existing.status === "approved" };
 
   let displayName = name.trim().slice(0, 40);
   if (displayName.length < 2) displayName = email.split("@")[0].slice(0, 40);
@@ -80,7 +80,13 @@ export async function findOrCreateGoogleUser({ email, name }: GoogleProfile) {
   const first = !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
   const [user] = await db
     .insert(schema.users)
-    .values({ displayName, email, passwordHash: NO_PASSWORD, role: first ? "admin" : "user" })
+    .values({
+      displayName,
+      email,
+      passwordHash: NO_PASSWORD,
+      role: first ? "admin" : "user",
+      status: first ? "approved" : "pending",
+    })
     .returning({ id: schema.users.id });
-  return { id: user.id, created: true };
+  return { id: user.id, created: true, approved: first };
 }

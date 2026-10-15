@@ -69,10 +69,11 @@ export type CurrentUser = {
   id: number;
   displayName: string;
   role: "user" | "admin";
+  status: "pending" | "approved" | "rejected";
 };
 
-/** Usuario logueado o null (deduplicado por request). Lee cookies: usar detrás de <Suspense>. */
-export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
+/** Usuario con sesión, aprobado o no (deduplicado por request). Lee cookies: usar detrás de <Suspense>. */
+export const getSessionUser = cache(async (): Promise<CurrentUser | null> => {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!token) return null;
   const row = await db
@@ -80,6 +81,7 @@ export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
       id: schema.users.id,
       displayName: schema.users.displayName,
       role: schema.users.role,
+      status: schema.users.status,
       expiresAt: schema.sessions.expiresAt,
     })
     .from(schema.sessions)
@@ -87,12 +89,19 @@ export const getCurrentUser = cache(async (): Promise<CurrentUser | null> => {
     .where(eq(schema.sessions.id, sha256(token)))
     .get();
   if (!row || row.expiresAt.getTime() < Date.now()) return null;
-  return { id: row.id, displayName: row.displayName, role: row.role };
+  return { id: row.id, displayName: row.displayName, role: row.role, status: row.status };
 });
 
+/** Usuario logueado y aprobado por un admin, o null. Las cuentas pendientes no usan el portal. */
+export async function getCurrentUser(): Promise<CurrentUser | null> {
+  const user = await getSessionUser();
+  return user?.status === "approved" ? user : null;
+}
+
 export async function requireUser(): Promise<CurrentUser> {
-  const user = await getCurrentUser();
+  const user = await getSessionUser();
   if (!user) redirect("/ingresar");
+  if (user.status !== "approved") redirect("/pendiente");
   return user;
 }
 
