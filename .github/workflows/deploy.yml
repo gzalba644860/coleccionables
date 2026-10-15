@@ -1,0 +1,34 @@
+# Publica en Vercel en cada push a main.
+# Secretos del repo: VERCEL_TOKEN, TURSO_DATABASE_URL, TURSO_AUTH_TOKEN.
+# El build remoto corre `vercel-build` (migraciones + catálogo + next build).
+name: Deploy a Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publicar
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$TURSO_DATABASE_URL" ] || [ -z "$TURSO_AUTH_TOKEN" ]; then
+            echo "Faltan secretos (VERCEL_TOKEN, TURSO_DATABASE_URL, TURSO_AUTH_TOKEN); no se publica."
+            exit 0
+          fi
+          npx --yes vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN" \
+            --build-env TURSO_DATABASE_URL="$TURSO_DATABASE_URL" \
+            --build-env TURSO_AUTH_TOKEN="$TURSO_AUTH_TOKEN" \
+            --env TURSO_DATABASE_URL="$TURSO_DATABASE_URL" \
+            --env TURSO_AUTH_TOKEN="$TURSO_AUTH_TOKEN"
