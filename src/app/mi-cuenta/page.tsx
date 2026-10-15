@@ -8,6 +8,8 @@ import { ItemImage } from "@/components/item-image";
 import { getUserList } from "@/lib/inventory";
 import { ListTabs } from "@/components/list-tabs";
 import { PushToggle } from "@/components/push-toggle";
+import { ShareList } from "@/components/share-list";
+import { buildShareText, siteOrigin } from "@/lib/share";
 
 export default function MyCollectionPage({ searchParams }: PageProps<"/mi-cuenta">) {
   return (
@@ -30,6 +32,7 @@ async function MyCollection({
     getUserList(user.id, "tengo"),
     getUserList(user.id, "busco"),
   ]);
+  const profileUrl = `${await siteOrigin()}/usuario/${user.id}`;
 
   return (
     <div className="grid gap-5">
@@ -45,6 +48,10 @@ async function MyCollection({
           </Link>
         </div>
       </div>
+
+      {have.length + want.length > 0 && (
+        <ShareList text={buildShareText(have, want, profileUrl)} url={profileUrl} />
+      )}
 
       <ListTabs
         initial={initial}

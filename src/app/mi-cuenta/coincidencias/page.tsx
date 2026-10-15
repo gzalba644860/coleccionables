@@ -4,6 +4,8 @@ import { openDirect } from "@/app/actions/messages";
 import { requireUser } from "@/lib/auth";
 import { ItemImage } from "@/components/item-image";
 import { getMatches } from "@/lib/inventory";
+import { getReputations } from "@/lib/reputation";
+import { ReputationBadge } from "@/components/stars";
 
 export default function MatchesPage() {
   return (
@@ -23,6 +25,7 @@ export default function MatchesPage() {
 async function Matches() {
   const user = await requireUser();
   const groups = await getMatches(user.id);
+  const reps = await getReputations(groups.map((g) => g.otherId));
   if (!groups.length) {
     return (
       <p className="text-sm text-muted">
@@ -41,6 +44,9 @@ async function Matches() {
                 {g.otherName}
               </Link>
               {g.city && <span className="text-sm text-muted"> · {g.city}</span>}
+              <div>
+                <ReputationBadge avg={reps[g.otherId]?.avg ?? 0} count={reps[g.otherId]?.count ?? 0} />
+              </div>
             </div>
             <div className="flex items-center gap-2">
             <span
