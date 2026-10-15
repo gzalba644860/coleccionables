@@ -25,5 +25,6 @@ export async function GET(request: NextRequest) {
 
   const user = await findOrCreateGoogleUser(profile);
   await createSession(user.id);
+  if (!user.approved) redirect("/pendiente");
   redirect(user.created ? "/mi-cuenta/perfil" : "/mi-cuenta");
 }

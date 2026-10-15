@@ -54,6 +54,8 @@ En una base vacía, **el primer usuario que se registra queda como admin**.
 
 **Login con Google** (opcional): con `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET` aparece el botón "Entrar con Google" en `/ingresar` y `/registro`. La URL de redirección autorizada en Google Cloud es `<url del sitio>/auth/google/callback`. Si el email ya tiene cuenta, se vincula a esa cuenta.
 
+**Aprobación de cuentas**: toda cuenta nueva (por email o Google) queda pendiente hasta que un admin la apruebe en `/admin`; mientras tanto ve `/pendiente` y no puede usar el portal. El primer usuario y las cuentas previas quedan aprobadas.
+
 ## Carga del catálogo
 
 En `/admin` (solo admin): crear tipos, marcas, colecciones y cargar ítems en bloque

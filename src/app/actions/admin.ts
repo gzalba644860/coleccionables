@@ -1,6 +1,6 @@
 "use server";
 
-import { updateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db, schema } from "@/db";
@@ -104,4 +104,17 @@ export async function bulkItems(_: FormState, formData: FormData): Promise<FormS
   }
   updateTag("catalog");
   return { ok: `${rows.length} ítems procesados` };
+}
+
+const reviewSchema = z.object({
+  userId: z.coerce.number().int().positive(),
+  status: z.enum(["approved", "rejected"]),
+});
+
+/** Aprueba o rechaza una cuenta nueva. */
+export async function reviewUser(formData: FormData) {
+  await requireAdmin();
+  const { userId, status } = reviewSchema.parse(Object.fromEntries(formData));
+  await db.update(schema.users).set({ status }).where(eq(schema.users.id, userId));
+  revalidatePath("/admin");
 }

@@ -1,14 +1,21 @@
 import Link from "next/link";
-import { getCurrentUser } from "@/lib/auth";
+import { getSessionUser } from "@/lib/auth";
 import { countUnread } from "@/lib/messages";
 import { UnreadBadge } from "./unread-badge";
 
 export async function UserNav() {
-  const user = await getCurrentUser();
+  const user = await getSessionUser();
   if (!user) {
     return (
       <Link href="/ingresar" className="btn-primary !py-2">
         Ingresar
+      </Link>
+    );
+  }
+  if (user.status !== "approved") {
+    return (
+      <Link href="/pendiente" className="btn-ghost whitespace-nowrap !px-3 !py-2">
+        Cuenta en revisión
       </Link>
     );
   }

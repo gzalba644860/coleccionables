@@ -1,20 +1,75 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { bulkItems, createBrand, createCollection, createType } from "@/app/actions/admin";
+import { desc, eq } from "drizzle-orm";
+import {
+  bulkItems,
+  createBrand,
+  createCollection,
+  createType,
+  reviewUser,
+} from "@/app/actions/admin";
 import { ActionForm, Field } from "@/components/action-form";
 import { requireAdmin } from "@/lib/auth";
 import { getCatalogTree } from "@/lib/catalog";
+import { db, schema } from "@/db";
 
-export const metadata: Metadata = { title: "Admin catálogo" };
+export const metadata: Metadata = { title: "Admin" };
 
 export default function AdminPage() {
   return (
     <div className="grid gap-6">
+      <h1 className="text-2xl font-bold">Cuentas nuevas</h1>
+      <Suspense fallback={<div className="card h-24 animate-pulse" />}>
+        <PendingUsers />
+      </Suspense>
       <h1 className="text-2xl font-bold">Carga del catálogo</h1>
       <Suspense fallback={<div className="card h-60 animate-pulse" />}>
         <AdminForms />
       </Suspense>
     </div>
+  );
+}
+
+async function PendingUsers() {
+  await requireAdmin();
+  const pending = await db
+    .select({
+      id: schema.users.id,
+      displayName: schema.users.displayName,
+      email: schema.users.email,
+      city: schema.users.city,
+      createdAt: schema.users.createdAt,
+    })
+    .from(schema.users)
+    .where(eq(schema.users.status, "pending"))
+    .orderBy(desc(schema.users.createdAt));
+
+  if (pending.length === 0) {
+    return <p className="card p-4 text-sm text-muted">No hay cuentas esperando aprobación.</p>;
+  }
+  return (
+    <ul className="card divide-y divide-border">
+      {pending.map((u) => (
+        <li key={u.id} className="flex flex-wrap items-center gap-3 p-4">
+          <div className="min-w-0 flex-1">
+            <p className="font-medium">{u.displayName}</p>
+            <p className="truncate text-sm text-muted">
+              {u.email}
+              {u.city && ` · ${u.city}`} · {u.createdAt.toLocaleDateString("es-AR")}
+            </p>
+          </div>
+          <form action={reviewUser} className="flex gap-2">
+            <input type="hidden" name="userId" value={u.id} />
+            <button name="status" value="approved" className="btn-primary !py-2">
+              Aprobar
+            </button>
+            <button name="status" value="rejected" className="btn-ghost !py-2">
+              Rechazar
+            </button>
+          </form>
+        </li>
+      ))}
+    </ul>
   );
 }
 
