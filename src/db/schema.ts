@@ -241,3 +241,33 @@ export const messages = sqliteTable(
   },
   (t) => [index("messages_conv_id_idx").on(t.conversationId, t.id)],
 );
+
+/* ───────────────────────── Reputación ─────────────────────────
+ * Después de un intercambio, cada parte califica a la otra (1 a 5
+ * estrellas y un comentario). Una calificación por par de usuarios:
+ * si vuelven a cambiar, la actualizan. Solo puede calificar quien
+ * tuvo un chat directo con mensajes de los dos lados.
+ */
+
+export const ratings = sqliteTable(
+  "ratings",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    raterId: integer("rater_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    ratedId: integer("rated_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    stars: integer("stars").notNull(),
+    comment: text("comment"),
+    ...timestamps,
+    updatedAt: integer("updated_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(unixepoch())`),
+  },
+  (t) => [
+    uniqueIndex("ratings_rater_rated_uq").on(t.raterId, t.ratedId),
+    index("ratings_rated_idx").on(t.ratedId, t.updatedAt),
+  ],
+);

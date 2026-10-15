@@ -45,6 +45,11 @@ async function Conversation({ params }: { params: Promise<{ id: string }> }) {
             </p>
           )}
         </div>
+        {other && (
+          <Link href={`/usuario/${other.id}#calificar`} className="btn-ghost !py-1.5" title="Marcar el intercambio como hecho y calificar">
+            ★ Calificar
+          </Link>
+        )}
         <Link href={`/mensajes/${id}/miembros`} className="btn-ghost !py-1.5">
           {conv.isDirect ? "Opciones" : "Miembros"}
         </Link>
