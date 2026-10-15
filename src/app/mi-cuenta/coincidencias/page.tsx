@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { openDirect } from "@/app/actions/messages";
 import { requireUser } from "@/lib/auth";
 import { ItemImage } from "@/components/item-image";
 import { getMatches } from "@/lib/inventory";
@@ -41,6 +42,7 @@ async function Matches() {
               </Link>
               {g.city && <span className="text-sm text-muted"> · {g.city}</span>}
             </div>
+            <div className="flex items-center gap-2">
             <span
               className={`rounded-full px-3 py-1 text-xs font-semibold ${
                 g.canGive ? "bg-have text-white" : "bg-border"
@@ -49,6 +51,10 @@ async function Matches() {
               Tiene {g.items.length} que buscás
               {g.canGive ? ` · busca ${g.canGive} que tenés` : ""}
             </span>
+            <form action={openDirect.bind(null, g.otherId)}>
+              <button className="btn-ghost !px-3 !py-1 text-xs">Mensaje</button>
+            </form>
+            </div>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {g.items.map((i) => (

@@ -6,26 +6,32 @@ import { INTENTS } from "@/db/schema";
 import { requireUser } from "@/lib/auth";
 import { ItemImage } from "@/components/item-image";
 import { getUserList } from "@/lib/inventory";
+import { ListTabs } from "@/components/list-tabs";
 
-export default function MyCollectionPage() {
+export default function MyCollectionPage({ searchParams }: PageProps<"/mi-cuenta">) {
   return (
     <Suspense fallback={<GridSkeleton />}>
-      <MyCollection />
+      <MyCollection searchParams={searchParams} />
     </Suspense>
   );
 }
 
 const INTENT_LABEL = { venta: "Venta", intercambio: "Intercambio", ambos: "Ambos" };
 
-async function MyCollection() {
+async function MyCollection({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const user = await requireUser();
+  const initial = (await searchParams).lista === "busco" ? "busco" : "tengo";
   const [have, want] = await Promise.all([
     getUserList(user.id, "tengo"),
     getUserList(user.id, "busco"),
   ]);
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Hola, {user.displayName}</h1>
         <div className="flex gap-2">
@@ -38,9 +44,11 @@ async function MyCollection() {
         </div>
       </div>
 
-      <section className="grid gap-3">
-        <h2 className="text-lg font-semibold text-have">Tengo para ofrecer ({have.length})</h2>
-        {have.length === 0 ? (
+      <ListTabs
+        initial={initial}
+        haveCount={have.length}
+        wantCount={want.length}
+        have={have.length === 0 ? (
           <Empty />
         ) : (
           <ul className="grid gap-2">
@@ -88,11 +96,7 @@ async function MyCollection() {
             ))}
           </ul>
         )}
-      </section>
-
-      <section className="grid gap-3">
-        <h2 className="text-lg font-semibold text-want">Busco ({want.length})</h2>
-        {want.length === 0 ? (
+        want={want.length === 0 ? (
           <Empty />
         ) : (
           <ItemGrid>
@@ -106,7 +110,7 @@ async function MyCollection() {
             ))}
           </ItemGrid>
         )}
-      </section>
+      />
     </div>
   );
 }

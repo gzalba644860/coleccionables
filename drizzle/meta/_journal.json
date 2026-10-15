@@ -15,6 +15,13 @@
       "when": 1791825082636,
       "tag": "0001_item_section",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792065437901,
+      "tag": "0002_mensajes",
+      "breakpoints": true
     }
   ]
 }

@@ -24,11 +24,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col font-sans">
         <header className="sticky top-0 z-20 border-b border-border bg-card/90 backdrop-blur">
           <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
-            <Link href="/" className="text-lg font-bold tracking-tight">
+            <Link href="/" className="min-w-0 truncate text-base font-bold tracking-tight sm:text-lg">
               <span className="text-accent">●</span> Coleccionables
             </Link>
-            <nav className="ml-auto flex items-center gap-1 text-sm">
-              <Link href="/buscar" className="rounded-lg px-3 py-2 hover:bg-background">
+            <nav className="ml-auto flex shrink-0 items-center text-sm sm:gap-1">
+              <Link href="/buscar" className="rounded-lg px-2 py-2 hover:bg-background sm:px-3">
                 Buscar
               </Link>
               <Suspense fallback={<span className="w-20" />}>

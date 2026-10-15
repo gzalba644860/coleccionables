@@ -10,7 +10,10 @@ Mobile-first, pensado para ~1000 usuarios con costo $0.
 3. Marca cada ítem como **Lo tengo** (con cantidad de repetidas, venta/intercambio, precio y nota) o **Lo busco**.
 4. Cada ítem muestra **quién lo tiene** y **quién lo busca**; cada perfil muestra qué ofrece y qué busca.
 5. **Coincidencias**: quién tiene lo que buscás, ordenado primero por intercambio mutuo.
-6. Los **medios de contacto** (WhatsApp, teléfono, email, Instagram, Telegram, otro) solo los ven usuarios registrados. Las fotos reales se comparten por fuera del sitio.
+6. **Mi colección** tiene dos pestañas arriba, **Ofrezco** y **Busco**, para saltar directo a cada lista.
+7. **Mensajes**: chat interno. Cada usuario puede crear grupos, sumar a otros usuarios buscándolos por nombre
+   y chatear con todos los del grupo. Desde un perfil o desde Coincidencias, "Enviar mensaje" abre un chat 1 a 1.
+8. Los **medios de contacto** (WhatsApp, teléfono, email, Instagram, Telegram, otro) solo los ven usuarios registrados. Las fotos reales se comparten por fuera del sitio.
 
 ## Stack
 
@@ -31,6 +34,10 @@ El catálogo se cachea (`"use cache"` + `cacheTag("catalog")`) y se invalida cua
 - `collections`: tipo + marca + año, total de ítems, portada.
 - `items`: código impreso, nombre, variante (normal/brillante…), rareza, `image_key`. Único por (colección, código, variante).
 - `users`, `sessions`, `contact_methods`.
+- `conversations`, `conversation_members`, `messages`: chat interno. Un chat directo es un grupo de dos
+  (`is_direct`, con `direct_key` "idMenor:idMayor" para no duplicarlo). `last_read_id` por miembro da los no leídos.
+  Sin servicios de tiempo real pagos: el chat abierto consulta mensajes nuevos cada 4 s y el contador del menú cada 30 s,
+  solo mientras la pestaña está visible.
 - `user_items`: una fila por (usuario, ítem, lista `tengo|busco`) con cantidad, intención (venta/intercambio/ambos), precio y notas. Índice `(item_id, list)` para "¿quién lo tiene?".
 
 ## Desarrollo local

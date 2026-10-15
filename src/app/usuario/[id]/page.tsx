@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { openDirect } from "@/app/actions/messages";
 import { ContactList } from "@/components/contact-list";
 import { GridSkeleton, ItemCard, ItemGrid } from "@/components/item-card";
 import { getCurrentUser } from "@/lib/auth";
@@ -56,13 +57,20 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
         <div>
           <h2 className="mb-2 text-sm font-semibold">Contacto</h2>
           {viewer ? (
-            <ContactList contacts={contacts} />
+            <div className="grid gap-3">
+              {viewer.id !== id && (
+                <form action={openDirect.bind(null, id)}>
+                  <button className="btn-primary">Enviar mensaje</button>
+                </form>
+              )}
+              <ContactList contacts={contacts} />
+            </div>
           ) : (
             <p className="text-sm text-muted">
               <Link href="/ingresar" className="underline">
                 Ingresá
               </Link>{" "}
-              para ver cómo contactarlo.
+              para ver cómo contactarlo o mandarle un mensaje.
             </p>
           )}
         </div>

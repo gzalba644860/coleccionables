@@ -173,3 +173,62 @@ export const userItems = sqliteTable(
     index("user_items_item_list_idx").on(t.itemId, t.list),
   ],
 );
+
+/* ───────────────────────── Mensajes ─────────────────────────
+ * Chat interno guardado en la base (sin servicios pagos): cada
+ * conversación es un grupo con miembros; un chat 1 a 1 es un grupo
+ * de dos con is_direct = 1. El cliente consulta mensajes nuevos cada
+ * pocos segundos mientras la pantalla está abierta.
+ */
+
+export const conversations = sqliteTable(
+  "conversations",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    /** Nombre del grupo; null en los chats directos. */
+    name: text("name"),
+    isDirect: integer("is_direct", { mode: "boolean" }).notNull().default(false),
+    /** Para directos: "idMenor:idMayor", evita duplicados. */
+    directKey: text("direct_key").unique(),
+    createdBy: integer("created_by")
+      .notNull()
+      .references(() => users.id),
+    lastMessageAt: integer("last_message_at", { mode: "timestamp" }),
+    ...timestamps,
+  },
+);
+
+export const conversationMembers = sqliteTable(
+  "conversation_members",
+  {
+    conversationId: integer("conversation_id")
+      .notNull()
+      .references(() => conversations.id, { onDelete: "cascade" }),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** Último mensaje leído (id), para contar no leídos. */
+    lastReadId: integer("last_read_id").notNull().default(0),
+    ...timestamps,
+  },
+  (t) => [
+    uniqueIndex("conversation_members_conv_user_uq").on(t.conversationId, t.userId),
+    index("conversation_members_user_idx").on(t.userId),
+  ],
+);
+
+export const messages = sqliteTable(
+  "messages",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    conversationId: integer("conversation_id")
+      .notNull()
+      .references(() => conversations.id, { onDelete: "cascade" }),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    body: text("body").notNull(),
+    ...timestamps,
+  },
+  (t) => [index("messages_conv_id_idx").on(t.conversationId, t.id)],
+);

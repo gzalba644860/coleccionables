@@ -54,6 +54,22 @@ allItemIds.filter((_, i) => i % 7 === 0).forEach((itemId, i) => {
 });
 await db.insert(s.userItems).values(inv).onConflictDoNothing();
 
+// Un grupo de ejemplo con los tres usuarios y un par de mensajes.
+const existing = await db.select({ id: s.conversations.id }).from(s.conversations).limit(1);
+if (!existing.length) {
+  const [group] = await db
+    .insert(s.conversations)
+    .values({ name: "Figus Mundial 2026", createdBy: userIds[0], lastMessageAt: new Date() })
+    .returning();
+  await db
+    .insert(s.conversationMembers)
+    .values(userIds.map((userId) => ({ conversationId: group.id, userId })));
+  await db.insert(s.messages).values([
+    { conversationId: group.id, userId: userIds[1], body: "¡Hola! Tengo varias repetidas de Argentina, ¿alguien cambia?" },
+    { conversationId: group.id, userId: userIds[2], body: "Yo busco ARG10 y ARG17. Te paso mi lista." },
+  ]);
+}
+
 console.log(
   `Seed listo: ${allItemIds.length} ítems, ${userIds.length} usuarios (pass: demo1234)`,
 );
