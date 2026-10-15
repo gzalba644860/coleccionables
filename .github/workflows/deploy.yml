@@ -1,6 +1,7 @@
 # Publica en Vercel en cada push a main.
 # Secretos del repo: VERCEL_TOKEN, TURSO_DATABASE_URL, TURSO_AUTH_TOKEN.
-# Opcionales (login con Google): GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET.
+# Opcionales: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET (login con Google) y
+# ADMIN_EMAIL (emails separados por comas que quedan como administradores).
 # El build remoto corre `vercel-build` (migraciones + catálogo + next build).
 name: Deploy a Vercel
 
@@ -25,6 +26,7 @@ jobs:
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
         run: |
           if [ -z "$VERCEL_TOKEN" ] || [ -z "$TURSO_DATABASE_URL" ] || [ -z "$TURSO_AUTH_TOKEN" ]; then
             echo "Faltan secretos (VERCEL_TOKEN, TURSO_DATABASE_URL, TURSO_AUTH_TOKEN); no se publica."
@@ -38,4 +40,6 @@ jobs:
             --build-env GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" \
             --build-env GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET" \
             --env GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" \
-            --env GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET"
+            --env GOOGLE_CLIENT_SECRET="$GOOGLE_CLIENT_SECRET" \
+            --build-env ADMIN_EMAIL="$ADMIN_EMAIL" \
+            --env ADMIN_EMAIL="$ADMIN_EMAIL"

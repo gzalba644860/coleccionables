@@ -1,6 +1,7 @@
 import "server-only";
 import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
+import { isAdminEmail } from "@/lib/admins";
 
 /* Login con Google (OAuth 2.0 / OpenID Connect), sin dependencias externas. */
 
@@ -92,8 +93,10 @@ export async function findOrCreateGoogleUser({ email, name, picture }: GooglePro
   let displayName = name.trim().slice(0, 40);
   if (displayName.length < 2) displayName = email.split("@")[0].slice(0, 40);
 
-  // Igual que en el registro: el primer usuario queda como administrador.
-  const first = !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
+  // Igual que en el registro: el primer usuario (o un email de ADMIN_EMAIL) queda como administrador.
+  const asAdmin =
+    isAdminEmail(email) ||
+    !(await db.select({ id: schema.users.id }).from(schema.users).limit(1).get());
   const avatar = await googlePicture(picture);
   const [user] = await db
     .insert(schema.users)
@@ -101,11 +104,11 @@ export async function findOrCreateGoogleUser({ email, name, picture }: GooglePro
       displayName,
       email,
       passwordHash: NO_PASSWORD,
-      role: first ? "admin" : "user",
-      status: first ? "approved" : "pending",
+      role: asAdmin ? "admin" : "user",
+      status: asAdmin ? "approved" : "pending",
       avatar,
       avatarVersion: avatar ? Date.now() : 0,
     })
     .returning({ id: schema.users.id });
-  return { id: user.id, created: true, approved: first };
+  return { id: user.id, created: true, approved: asAdmin };
 }

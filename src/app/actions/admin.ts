@@ -118,3 +118,12 @@ export async function reviewUser(formData: FormData) {
   await db.update(schema.users).set({ status }).where(eq(schema.users.id, userId));
   revalidatePath("/admin");
 }
+
+/** Quita el rol de admin a otra cuenta (nadie se lo puede quitar a sí mismo). */
+export async function revokeAdmin(formData: FormData) {
+  const me = await requireAdmin();
+  const userId = z.coerce.number().int().positive().parse(formData.get("userId"));
+  if (userId === me.id) return;
+  await db.update(schema.users).set({ role: "user" }).where(eq(schema.users.id, userId));
+  revalidatePath("/admin");
+}

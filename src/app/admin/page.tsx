@@ -7,6 +7,7 @@ import {
   createCollection,
   createType,
   reviewUser,
+  revokeAdmin,
 } from "@/app/actions/admin";
 import { ActionForm, Field } from "@/components/action-form";
 import { requireAdmin } from "@/lib/auth";
@@ -21,6 +22,10 @@ export default function AdminPage() {
       <h1 className="text-2xl font-bold">Cuentas nuevas</h1>
       <Suspense fallback={<div className="card h-24 animate-pulse" />}>
         <PendingUsers />
+      </Suspense>
+      <h1 className="text-2xl font-bold">Administradores</h1>
+      <Suspense fallback={<div className="card h-24 animate-pulse" />}>
+        <Admins />
       </Suspense>
       <h1 className="text-2xl font-bold">Carga del catálogo</h1>
       <Suspense fallback={<div className="card h-60 animate-pulse" />}>
@@ -67,6 +72,34 @@ async function PendingUsers() {
               Rechazar
             </button>
           </form>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+async function Admins() {
+  const me = await requireAdmin();
+  const admins = await db
+    .select({ id: schema.users.id, displayName: schema.users.displayName, email: schema.users.email })
+    .from(schema.users)
+    .where(eq(schema.users.role, "admin"));
+  return (
+    <ul className="card divide-y divide-border">
+      {admins.map((u) => (
+        <li key={u.id} className="flex flex-wrap items-center gap-3 p-4">
+          <div className="min-w-0 flex-1">
+            <p className="font-medium">
+              {u.displayName} {u.id === me.id && <span className="text-sm text-muted">(vos)</span>}
+            </p>
+            <p className="truncate text-sm text-muted">{u.email}</p>
+          </div>
+          {u.id !== me.id && (
+            <form action={revokeAdmin}>
+              <input type="hidden" name="userId" value={u.id} />
+              <button className="btn-ghost !py-2">Quitar admin</button>
+            </form>
+          )}
         </li>
       ))}
     </ul>
