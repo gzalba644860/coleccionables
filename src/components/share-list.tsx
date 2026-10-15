@@ -44,7 +44,7 @@ export function ShareList({ text, url }: { text: string; url: string }) {
         </button>
       </div>
       {open && (
-        <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded-lg bg-background p-3 font-sans text-sm">
+        <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded-xl bg-subtle p-3 font-sans text-sm">
           {text}
         </pre>
       )}

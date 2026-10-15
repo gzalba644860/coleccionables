@@ -5,7 +5,7 @@ export function GoogleLogin() {
   if (!googleEnabled()) return null;
   return (
     <>
-      <a href="/auth/google" className="btn-ghost flex items-center justify-center gap-2">
+      <a href="/auth/google" className="btn-ghost !py-3">
         <svg aria-hidden viewBox="0 0 48 48" className="size-5">
           <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
           <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
@@ -14,7 +14,9 @@ export function GoogleLogin() {
         </svg>
         Entrar con Google
       </a>
-      <p className="text-center text-xs text-muted">o con tu email</p>
+      <p className="flex items-center gap-3 text-xs text-muted before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+        o con tu email
+      </p>
     </>
   );
 }
@@ -27,7 +29,7 @@ export async function GoogleError({
   const { error } = await searchParams;
   if (error !== "google") return null;
   return (
-    <p className="text-center text-sm text-red-600">
+    <p className="text-center text-sm text-danger">
       No pudimos entrar con Google. Probá de nuevo.
     </p>
   );

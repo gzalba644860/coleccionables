@@ -20,18 +20,18 @@ export const metadata: Metadata = { title: "Admin" };
 export default function AdminPage({ searchParams }: PageProps<"/admin">) {
   return (
     <div className="grid gap-6">
-      <h1 className="text-2xl font-bold">Cuentas nuevas</h1>
+      <h1 className="page-title">Cuentas nuevas</h1>
       <Suspense fallback={<div className="card h-24 animate-pulse" />}>
         <PendingUsers />
       </Suspense>
-      <h1 className="text-2xl font-bold">Administradores</h1>
+      <h1 className="page-title">Administradores</h1>
       <Suspense fallback={<div className="card h-24 animate-pulse" />}>
         <Admins />
       </Suspense>
       <Suspense fallback={<div className="card h-24 animate-pulse" />}>
         <GrantAdmin searchParams={searchParams as Promise<{ q?: string }>} />
       </Suspense>
-      <h1 className="text-2xl font-bold">Carga del catálogo</h1>
+      <h1 className="page-title">Carga del catálogo</h1>
       <Suspense fallback={<div className="card h-60 animate-pulse" />}>
         <AdminForms />
       </Suspense>

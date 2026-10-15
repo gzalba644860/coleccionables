@@ -99,8 +99,8 @@ export function Chat({
           return (
             <li key={m.id} className={`flex ${mine ? "justify-end" : "justify-start"}`}>
               <div
-                className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${
-                  mine ? "rounded-br-sm bg-accent text-accent-fg" : "card rounded-bl-sm"
+                className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-[15px] leading-snug ${
+                  mine ? "rounded-br-md bg-accent text-accent-fg shadow-soft" : "rounded-bl-md border border-border bg-card shadow-soft"
                 }`}
               >
                 {showAuthors && !mine && <p className="text-xs font-semibold text-want">{m.author}</p>}
@@ -116,7 +116,7 @@ export function Chat({
       <div ref={bottom} />
       <form
         onSubmit={send}
-        className="sticky bottom-0 -mx-4 flex items-end gap-2 border-t border-border bg-background px-4 py-3"
+        className="sticky bottom-0 -mx-4 flex items-end gap-2 border-t border-border bg-card/90 px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl"
       >
         <textarea
           value={text}
@@ -130,13 +130,13 @@ export function Chat({
           rows={1}
           maxLength={2000}
           placeholder="Escribí un mensaje…"
-          className="input max-h-32 min-h-11 flex-1 resize-none"
+          className="input max-h-32 min-h-11 flex-1 resize-none !rounded-2xl"
         />
         <button className="btn-primary" disabled={sending || !text.trim()}>
           Enviar
         </button>
       </form>
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
     </div>
   );
 }

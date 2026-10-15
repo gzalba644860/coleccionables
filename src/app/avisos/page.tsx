@@ -12,7 +12,7 @@ export default function AvisosPage() {
   return (
     <div className="mx-auto grid w-full max-w-2xl gap-5">
       <div>
-        <h1 className="text-2xl font-bold">Avisos</h1>
+        <h1 className="page-title">Avisos</h1>
         <p className="text-sm text-muted">
           Te avisamos cuando alguien tiene una figurita que buscás o busca una que tenés.
         </p>
@@ -53,7 +53,7 @@ async function AvisosList() {
           <li key={n.id}>
             <Link
               href={n.href}
-              className={`flex items-start gap-3 p-3 transition hover:bg-background ${
+              className={`flex items-start gap-3 p-3.5 transition hover:bg-subtle ${
                 n.readAt ? "" : "bg-accent/5"
               }`}
             >
@@ -68,7 +68,7 @@ async function AvisosList() {
                     size={42}
                   />
                 ) : (
-                  <span className="block size-[42px] rounded-full bg-border" />
+                  <span className="block size-[42px] rounded-full bg-subtle" />
                 )}
                 <span
                   className={`absolute -bottom-0.5 -right-0.5 grid size-5 place-items-center rounded-full text-[10px] font-bold text-white ring-2 ring-card ${

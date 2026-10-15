@@ -19,28 +19,33 @@ export function ItemActions({
 
   if (!loggedIn) {
     return (
-      <a href="/ingresar" className="block text-center text-xs text-muted underline">
+      <a
+        href="/ingresar"
+        className="flex h-9 items-center justify-center rounded-lg bg-subtle text-xs font-semibold text-muted transition hover:text-foreground"
+      >
         Ingresá para marcarlo
       </a>
     );
   }
 
+  const base =
+    "flex h-9 flex-1 items-center justify-center gap-1 rounded-lg text-xs font-semibold transition active:scale-95";
   return (
-    <div className={`flex gap-1 ${pending ? "opacity-60" : ""}`}>
+    <div className={`flex gap-1.5 transition-opacity ${pending ? "opacity-60" : ""}`}>
       {tengo ? (
-        <div className="flex flex-1 items-center justify-between rounded-lg bg-have text-xs font-semibold text-white">
+        <div className={`${base} justify-between bg-have text-white shadow-soft`}>
           <button
             aria-label="Restar"
-            className="px-2.5 py-1.5"
+            className="grid h-full w-8 place-items-center rounded-l-lg text-base hover:bg-black/10"
             disabled={pending}
             onClick={() => start(() => changeQuantity(itemId, -1))}
           >
             −
           </button>
-          <span className="whitespace-nowrap">✓ {tengo}</span>
+          <span className="whitespace-nowrap tabular-nums">✓ {tengo}</span>
           <button
             aria-label="Sumar"
-            className="px-2.5 py-1.5"
+            className="grid h-full w-8 place-items-center rounded-r-lg text-base hover:bg-black/10"
             disabled={pending}
             onClick={() => start(() => changeQuantity(itemId, 1))}
           >
@@ -51,7 +56,7 @@ export function ItemActions({
         <button
           disabled={pending}
           onClick={() => start(() => toggleItem(itemId, "tengo"))}
-          className="flex-1 rounded-lg border border-have px-2 py-1.5 text-xs font-semibold text-have"
+          className={`${base} bg-have-soft text-have hover:bg-have hover:text-white`}
         >
           Lo tengo
         </button>
@@ -59,8 +64,10 @@ export function ItemActions({
       <button
         disabled={pending}
         onClick={() => start(() => toggleItem(itemId, "busco"))}
-        className={`flex-1 rounded-lg px-2 py-1.5 text-xs font-semibold ${
-          busco ? "bg-want text-white" : "border border-want text-want"
+        className={`${base} ${
+          busco
+            ? "bg-want text-white shadow-soft"
+            : "bg-want-soft text-want hover:bg-want hover:text-white"
         }`}
       >
         {busco ? "Lo busco ✓" : "Lo busco"}

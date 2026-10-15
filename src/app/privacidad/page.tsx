@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "Política de privacidad" };
 export default function PrivacyPage() {
   return (
     <article className="mx-auto grid max-w-2xl gap-4 text-sm leading-relaxed">
-      <h1 className="text-2xl font-bold">Política de privacidad</h1>
+      <h1 className="page-title">Política de privacidad</h1>
       <p>
         Coleccionables es un portal para comprar, vender e intercambiar figuritas y cartas entre
         coleccionistas. Esta página explica qué datos guardamos y para qué.

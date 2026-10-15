@@ -57,7 +57,7 @@ export function RatingForm({
         placeholder="Contá cómo fue (opcional): puntualidad, estado de las figuritas…"
         className="input resize-none"
       />
-      {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+      {state?.error && <p className="text-sm text-danger">{state.error}</p>}
       {state?.ok && <p className="text-sm text-have">{state.ok}</p>}
       <button className="btn-primary justify-self-start" disabled={pending || !stars}>
         {pending ? "Guardando…" : initial ? "Actualizar calificación" : "Intercambio hecho: calificar"}

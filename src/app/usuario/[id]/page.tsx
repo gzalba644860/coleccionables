@@ -85,49 +85,64 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="grid gap-8">
-      <div className="card grid gap-4 p-4 sm:grid-cols-2">
-        <div className="flex gap-4">
-          <Avatar user={profile} size={64} />
-          <div className="min-w-0">
-            <h1 className="text-2xl font-bold">{profile.displayName}</h1>
-            <a href="#reputacion" className="mt-0.5 flex flex-wrap items-center gap-x-2 text-sm">
-              {rep.count ? (
-                <>
-                  <Stars value={rep.avg} />
-                  <b>{rep.avg.toFixed(1).replace(".", ",")}</b>
-                  <span className="whitespace-nowrap text-muted">
-                    ({rep.count} {rep.count === 1 ? "calificación" : "calificaciones"})
-                  </span>
-                </>
-              ) : (
-                <span className="text-muted">Todavía sin calificaciones</span>
-              )}
-            </a>
-            <p className="text-sm text-muted">
-              {profile.city ?? "Sin ubicación"} · {have.length} para ofrecer · {want.length} buscados
-            </p>
-            {profile.bio && <p className="mt-2 whitespace-pre-line text-sm">{profile.bio}</p>}
-          </div>
-        </div>
-        <div>
-          <h2 className="mb-2 text-sm font-semibold">Contacto</h2>
-          {viewer ? (
-            <div className="grid gap-3">
-              {!isMe && (
-                <form action={openDirect.bind(null, id)}>
-                  <button className="btn-primary">Enviar mensaje</button>
-                </form>
-              )}
-              <ContactList contacts={contacts} />
+      <div className="card overflow-hidden">
+        <div aria-hidden className="h-24 bg-gradient-to-br from-accent via-[#c8441f] to-[#5a1f10] sm:h-32" />
+        <div className="grid gap-5 px-4 pb-5 sm:grid-cols-[1fr_auto] sm:px-6">
+          <div className="-mt-10 grid gap-3 sm:-mt-12">
+            <div className="w-fit rounded-full bg-card p-1 shadow-soft">
+              <Avatar user={profile} size={88} />
             </div>
-          ) : (
-            <p className="text-sm text-muted">
-              <Link href="/ingresar" className="underline">
-                Ingresá
-              </Link>{" "}
-              para ver cómo contactarlo o mandarle un mensaje.
-            </p>
-          )}
+            <div className="min-w-0">
+              <h1 className="page-title">{profile.displayName}</h1>
+              <p className="text-sm text-muted">{profile.city ?? "Sin ubicación"}</p>
+              <a href="#reputacion" className="mt-1.5 flex w-fit flex-wrap items-center gap-x-2 text-sm">
+                {rep.count ? (
+                  <>
+                    <Stars value={rep.avg} />
+                    <b>{rep.avg.toFixed(1).replace(".", ",")}</b>
+                    <span className="whitespace-nowrap text-muted">
+                      ({rep.count} {rep.count === 1 ? "calificación" : "calificaciones"})
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-muted">Todavía sin calificaciones</span>
+                )}
+              </a>
+            </div>
+            <dl className="flex gap-6 text-sm">
+              <div>
+                <dd className="text-xl font-extrabold tabular-nums text-have">{have.length}</dd>
+                <dt className="text-muted">para ofrecer</dt>
+              </div>
+              <div>
+                <dd className="text-xl font-extrabold tabular-nums text-want">{want.length}</dd>
+                <dt className="text-muted">buscadas</dt>
+              </div>
+            </dl>
+            {profile.bio && <p className="max-w-prose whitespace-pre-line text-sm">{profile.bio}</p>}
+          </div>
+          <div className="grid content-start gap-3 sm:min-w-64 sm:pt-4">
+            {viewer ? (
+              <>
+                {!isMe && (
+                  <form action={openDirect.bind(null, id)}>
+                    <button className="btn-primary w-full">Enviar mensaje</button>
+                  </form>
+                )}
+                <div className="rounded-xl bg-subtle p-3">
+                  <h2 className="eyebrow mb-2">Contacto</h2>
+                  <ContactList contacts={contacts} />
+                </div>
+              </>
+            ) : (
+              <p className="rounded-xl bg-subtle p-3 text-sm text-muted">
+                <Link href="/ingresar" className="link">
+                  Ingresá
+                </Link>{" "}
+                para ver cómo contactarlo o mandarle un mensaje.
+              </p>
+            )}
+          </div>
         </div>
       </div>
 
@@ -135,9 +150,9 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
         <ShareList text={buildShareText(have, want, profileUrl)} url={profileUrl} />
       )}
 
-      <section id="reputacion" className="card grid scroll-mt-20 gap-5 p-4 sm:grid-cols-[14rem_1fr]">
+      <section id="reputacion" className="card grid scroll-mt-20 gap-5 p-5 sm:grid-cols-[14rem_1fr] sm:p-6">
         <div className="grid content-start gap-3">
-          <h2 className="text-lg font-semibold">Reputación</h2>
+          <h2 className="text-lg font-bold">Reputación</h2>
           {rep.count ? (
             <>
               <div className="flex items-end gap-2">
@@ -155,7 +170,7 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
                 {[5, 4, 3, 2, 1].map((n) => (
                   <li key={n} className="flex items-center gap-2 text-xs text-muted">
                     <span className="w-3 text-right">{n}</span>
-                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-border">
+                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-subtle">
                       <span
                         className="block h-full rounded-full bg-amber-400"
                         style={{ width: `${(breakdown[n - 1] / rep.count) * 100}%` }}
@@ -177,7 +192,7 @@ async function Profile({ params }: { params: Promise<{ id: string }> }) {
 
         <div className="grid content-start gap-4">
           {viewer && !isMe && (
-            <div id="calificar" className="grid scroll-mt-20 gap-2 rounded-lg bg-background p-3">
+            <div id="calificar" className="grid scroll-mt-20 gap-2 rounded-xl bg-subtle p-4">
               <h3 className="text-sm font-semibold">
                 {myRating ? "Tu calificación" : `¿Hiciste un intercambio con ${profile.displayName}?`}
               </h3>
@@ -251,10 +266,16 @@ function Section({
 }) {
   return (
     <section className="grid gap-3">
-      <h2 className={`text-lg font-semibold ${color}`}>
-        {title} ({children.length})
+      <h2 className="flex items-center gap-2 text-lg font-bold">
+        <span className={`size-2.5 rounded-full ${color.replace("text-", "bg-")}`} aria-hidden />
+        {title}
+        <span className="text-sm font-medium text-muted">{children.length}</span>
       </h2>
-      {children.length ? <ItemGrid>{children}</ItemGrid> : <p className="text-sm text-muted">{empty}</p>}
+      {children.length ? (
+        <ItemGrid>{children}</ItemGrid>
+      ) : (
+        <p className="card p-4 text-sm text-muted">{empty}</p>
+      )}
     </section>
   );
 }

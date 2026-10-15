@@ -62,7 +62,7 @@ export function AvatarUpload({ hasPhoto }: { hasPhoto: boolean }) {
         {hasPhoto && (
           <button
             type="button"
-            className="text-sm text-red-600 underline"
+            className="text-sm text-danger underline"
             disabled={pending}
             onClick={() => start(() => removeAvatar())}
           >
@@ -77,7 +77,7 @@ export function AvatarUpload({ hasPhoto }: { hasPhoto: boolean }) {
         className="hidden"
         onChange={(e) => onFile(e.target.files?.[0])}
       />
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-danger">{error}</p>}
     </div>
   );
 }

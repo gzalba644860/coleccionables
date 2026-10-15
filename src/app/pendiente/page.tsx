@@ -22,7 +22,7 @@ async function PendingStatus() {
   if (user.status === "approved") redirect("/mi-cuenta");
 
   return (
-    <div className="card grid gap-3 p-4">
+    <div className="card grid gap-3 p-6 text-center">
       {user.status === "pending" ? (
         <>
           <h1 className="text-xl font-bold">Tu cuenta está en revisión</h1>

@@ -37,8 +37,8 @@ async function ProfileForms() {
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <section className="card grid content-start gap-3 p-4">
-        <h2 className="font-semibold">Mis datos</h2>
+      <section className="card grid content-start gap-4 p-5">
+        <h2 className="text-lg font-bold">Mis datos</h2>
         <div className="flex items-center gap-4">
           <Avatar user={user} size={72} />
           <div className="grid gap-1">
@@ -50,7 +50,7 @@ async function ProfileForms() {
           <Field label="Nombre o apodo" name="displayName" defaultValue={me?.displayName} required />
           <Field label="Ciudad / barrio" name="city" defaultValue={me?.city ?? ""} />
           <label className="grid gap-1 text-sm">
-            <span className="text-muted">Sobre mí (opcional)</span>
+            <span className="text-xs font-semibold text-muted">Sobre mí (opcional)</span>
             <textarea
               name="bio"
               rows={3}
@@ -66,8 +66,8 @@ async function ProfileForms() {
         </form>
       </section>
 
-      <section className="card grid content-start gap-3 p-4">
-        <h2 className="font-semibold">Medios de contacto</h2>
+      <section className="card grid content-start gap-4 p-5">
+        <h2 className="text-lg font-bold">Medios de contacto</h2>
         <p className="text-xs text-muted">
           Solo los ven usuarios registrados. Por acá coordinan y se pasan fotos reales.
         </p>
@@ -78,14 +78,14 @@ async function ProfileForms() {
                 <span className="text-muted">{contactLabel(c.kind)}:</span> {c.value}
               </span>
               <form action={removeContact.bind(null, c.id)}>
-                <button className="text-xs text-red-600 underline">Quitar</button>
+                <button className="text-xs text-danger underline">Quitar</button>
               </form>
             </li>
           ))}
         </ul>
         <ActionForm action={addContact} submit="Agregar contacto">
           <label className="grid gap-1 text-sm">
-            <span className="text-muted">Tipo</span>
+            <span className="text-xs font-semibold text-muted">Tipo</span>
             <select name="kind" className="input">
               {CONTACT_KINDS.map((k) => (
                 <option key={k} value={k}>

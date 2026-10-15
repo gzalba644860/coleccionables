@@ -147,7 +147,7 @@ export function PushToggle({ variant = "card" }: { variant?: "card" | "banner" }
         <div className="grid min-w-0 flex-1 gap-1">
           <h2 className="font-semibold">Notificaciones en este dispositivo</h2>
           <p className="text-sm text-muted">{describe(state)}</p>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-danger">{error}</p>}
         </div>
       </div>
       {(state === "off" || state === "on" || state === "busy") && (

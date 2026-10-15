@@ -28,12 +28,12 @@ export function ListTabs({
   const base = "flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold transition";
   return (
     <div className="grid gap-4">
-      <div role="tablist" className="sticky top-14 z-10 -mx-1 flex gap-1 rounded-xl border border-border bg-card p-1">
+      <div role="tablist" className="sticky top-[3.875rem] z-10 flex gap-1 rounded-xl border border-border bg-card/90 p-1 shadow-soft backdrop-blur-xl">
         <button
           role="tab"
           aria-selected={tab === "tengo"}
           onClick={() => select("tengo")}
-          className={`${base} ${tab === "tengo" ? "bg-have text-white" : "text-have"}`}
+          className={`${base} ${tab === "tengo" ? "bg-have text-white shadow-soft" : "text-muted hover:text-have"}`}
         >
           Ofrezco ({haveCount})
         </button>
@@ -41,7 +41,7 @@ export function ListTabs({
           role="tab"
           aria-selected={tab === "busco"}
           onClick={() => select("busco")}
-          className={`${base} ${tab === "busco" ? "bg-want text-white" : "text-want"}`}
+          className={`${base} ${tab === "busco" ? "bg-want text-white shadow-soft" : "text-muted hover:text-want"}`}
         >
           Busco ({wantCount})
         </button>

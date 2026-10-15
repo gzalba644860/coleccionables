@@ -11,9 +11,14 @@ export async function UserNav() {
   const user = await getSessionUser();
   if (!user) {
     return (
-      <Link href="/ingresar" className="btn-primary !py-2">
-        Ingresar
-      </Link>
+      <>
+        <Link href="/registro" className="rounded-lg px-3 py-2 text-muted hover:bg-subtle hover:text-foreground max-sm:hidden">
+          Crear cuenta
+        </Link>
+        <Link href="/ingresar" className="btn-primary !py-2">
+          Ingresar
+        </Link>
+      </>
     );
   }
   if (user.status !== "approved") {
@@ -30,52 +35,62 @@ export async function UserNav() {
   return (
     <>
       {user.role === "admin" && (
-        <Link href="/admin" className="rounded-lg px-2 py-2 hover:bg-background sm:px-3">
+        <Link href="/admin" className="rounded-lg px-3 py-2 text-muted hover:bg-subtle hover:text-foreground max-sm:hidden">
           Admin
         </Link>
       )}
       <Link
         href="/mensajes"
         aria-label="Mensajes"
-        className="relative rounded-lg px-2 py-2 hover:bg-background sm:px-3"
+        className="relative rounded-lg px-3 py-2 text-muted hover:bg-subtle hover:text-foreground max-sm:hidden"
       >
-        <span className="hidden sm:inline">Mensajes</span>
-        <svg viewBox="0 0 24 24" className="size-5 sm:hidden" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z" strokeLinejoin="round" />
-        </svg>
+        Mensajes
         <UnreadBadge kind="mensajes" initial={unread} />
       </Link>
       <Link
         href="/avisos"
         aria-label="Avisos"
         title="Avisos"
-        className="relative rounded-lg px-2 py-2 hover:bg-background"
+        className="relative grid size-10 place-items-center rounded-full text-muted hover:bg-subtle hover:text-foreground"
       >
-        <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+        <svg viewBox="0 0 24 24" className="size-[22px]" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden>
           <path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9" strokeLinejoin="round" />
           <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" strokeLinecap="round" />
         </svg>
         <UnreadBadge kind="avisos" initial={avisos} />
       </Link>
-      <Link href="/mi-cuenta" className="btn-primary whitespace-nowrap !px-3 !py-2 max-sm:hidden">
+      <Link href="/mi-cuenta" className="btn-primary ml-1 whitespace-nowrap !px-3.5 !py-2 max-sm:hidden">
         Mi colección
       </Link>
       <AccountMenu trigger={<Avatar user={user} size={34} />}>
-        <p className="truncate px-3 py-1 font-semibold">{user.displayName}</p>
-        <Link href="/mi-cuenta" className="rounded-lg px-3 py-2 hover:bg-background">
+        <div className="flex items-center gap-3 border-b border-border px-3 pb-3 pt-1">
+          <Avatar user={user} size={40} />
+          <div className="min-w-0">
+            <p className="truncate font-semibold">{user.displayName}</p>
+            <Link href={`/usuario/${user.id}`} className="text-xs text-muted hover:text-accent">
+              Ver mi perfil público
+            </Link>
+          </div>
+        </div>
+        <Link href="/mi-cuenta" className="menu-item mt-1">
           Mi colección
         </Link>
-        <Link href="/mi-cuenta/perfil" className="rounded-lg px-3 py-2 hover:bg-background">
+        <Link href="/mi-cuenta/coincidencias" className="menu-item">
+          Coincidencias
+        </Link>
+        <Link href="/mi-cuenta/perfil" className="menu-item">
           Mis datos y foto
         </Link>
-        <Link href="/avisos" className="rounded-lg px-3 py-2 hover:bg-background">
+        <Link href="/avisos" className="menu-item">
           Avisos y notificaciones
         </Link>
-        <Link href={`/usuario/${user.id}`} className="rounded-lg px-3 py-2 hover:bg-background">
-          Ver mi perfil público
-        </Link>
-        <form action={logout}>
-          <button className="w-full rounded-lg px-3 py-2 text-left text-red-600 hover:bg-background">
+        {user.role === "admin" && (
+          <Link href="/admin" className="menu-item">
+            Administración
+          </Link>
+        )}
+        <form action={logout} className="mt-1 border-t border-border pt-1">
+          <button className="menu-item w-full text-left text-danger">
             Cerrar sesión
           </button>
         </form>

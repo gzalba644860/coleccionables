@@ -14,7 +14,7 @@ export default async function BuscarPage({ searchParams }: PageProps<"/buscar">)
   const tree = await getCatalogTree();
   return (
     <div className="grid gap-6">
-      <h1 className="text-2xl font-bold">Buscar en el catálogo</h1>
+      <h1 className="page-title">Buscar en el catálogo</h1>
       <Suspense fallback={<GridSkeleton />}>
         <Results tree={tree} searchParams={searchParams} />
       </Suspense>

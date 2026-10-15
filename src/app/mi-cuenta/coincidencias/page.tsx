@@ -10,7 +10,7 @@ import { ReputationBadge } from "@/components/stars";
 export default function MatchesPage() {
   return (
     <div className="grid gap-4">
-      <h1 className="text-2xl font-bold">Coincidencias</h1>
+      <h1 className="page-title">Coincidencias</h1>
       <p className="text-sm text-muted">
         Usuarios que tienen lo que buscás. Primero los que además buscan algo que vos tenés:
         ahí hay intercambio posible.
@@ -37,10 +37,10 @@ async function Matches() {
   return (
     <ul className="grid gap-3">
       {groups.map((g) => (
-        <li key={g.otherId} className="card grid gap-3 p-3">
+        <li key={g.otherId} className={`card grid gap-3 p-4 ${g.canGive ? "!border-have/40" : ""}`}>
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <Link href={`/usuario/${g.otherId}`} className="font-semibold underline">
+              <Link href={`/usuario/${g.otherId}`} className="font-bold hover:text-accent">
                 {g.otherName}
               </Link>
               {g.city && <span className="text-sm text-muted"> · {g.city}</span>}
@@ -51,22 +51,22 @@ async function Matches() {
             <div className="flex items-center gap-2">
             <span
               className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                g.canGive ? "bg-have text-white" : "bg-border"
+                g.canGive ? "bg-have-soft text-have" : "bg-subtle text-muted"
               }`}
             >
               Tiene {g.items.length} que buscás
               {g.canGive ? ` · busca ${g.canGive} que tenés` : ""}
             </span>
             <form action={openDirect.bind(null, g.otherId)}>
-              <button className="btn-ghost !px-3 !py-1 text-xs">Mensaje</button>
+              <button className="btn-primary !px-3 !py-1.5 text-xs">Mensaje</button>
             </form>
             </div>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-1">
             {g.items.map((i) => (
-              <Link key={i.itemId} href={`/item/${i.itemId}`} className="w-20 shrink-0 text-center">
-                <ItemImage code={i.code} name={i.name} section={i.section} imageKey={i.imageKey} className="rounded" compact />
-                <span className="line-clamp-1 text-xs">{i.name}</span>
+              <Link key={i.itemId} href={`/item/${i.itemId}`} className="grid w-20 shrink-0 gap-1 text-center">
+                <ItemImage code={i.code} name={i.name} section={i.section} imageKey={i.imageKey} className="rounded-lg shadow-soft" compact />
+                <span className="line-clamp-1 text-xs font-medium">{i.name}</span>
               </Link>
             ))}
           </div>

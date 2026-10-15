@@ -32,7 +32,7 @@ async function Conversation({ params }: { params: Promise<{ id: string }> }) {
         <div className="min-w-0 flex-1">
           <h1 className="truncate text-xl font-bold">
             {other ? (
-              <Link href={`/usuario/${other.id}`} className="underline">
+              <Link href={`/usuario/${other.id}`} className="hover:text-accent">
                 {conv.title}
               </Link>
             ) : (

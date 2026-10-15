@@ -160,3 +160,33 @@ export async function searchItems(f: SearchFilters, limit = 60) {
     .orderBy(sql`${collections.year} desc`, asc(collections.name), asc(items.sortOrder))
     .limit(limit);
 }
+
+/** Hasta 3 imágenes repartidas por colección, para armar la portada en abanico. */
+export async function getCollectionPreviews(): Promise<Record<number, string[]>> {
+  "use cache";
+  cacheTag("catalog");
+  cacheLife("hours");
+  const rows = await db.all<{ collection_id: number; image_key: string }>(sql`
+    select collection_id, image_key from (
+      select collection_id, image_key,
+        row_number() over (partition by collection_id order by id) as rn,
+        count(*) over (partition by collection_id) as cnt
+      from ${items} where image_key is not null
+    ) where rn in (1 + cnt / 9, 1 + cnt / 3, 1 + cnt * 5 / 9)
+    order by collection_id, rn`);
+  const out: Record<number, string[]> = {};
+  for (const r of rows) (out[r.collection_id] ??= []).push(r.image_key);
+  return out;
+}
+
+/** Números de la comunidad para la portada (se recalculan cada tanto, no en cada visita). */
+export async function getCommunityStats() {
+  "use cache";
+  cacheLife("hours");
+  const [row] = await db.all<{ users: number; offered: number; wanted: number }>(sql`
+    select
+      (select count(*) from ${schema.users} where status = 'approved') as users,
+      (select coalesce(sum(quantity), 0) from ${userItems} where list = 'tengo') as offered,
+      (select count(*) from ${userItems} where list = 'busco') as wanted`);
+  return row ?? { users: 0, offered: 0, wanted: 0 };
+}

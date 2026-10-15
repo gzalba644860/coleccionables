@@ -56,7 +56,7 @@ export function UnreadBadge({ kind, initial }: { kind: keyof Counts; initial: nu
   const count = live ?? first;
   if (!count) return null;
   return (
-    <span className="absolute -right-1 -top-1 min-w-5 rounded-full bg-accent px-1.5 text-center text-[11px] font-bold leading-5 text-accent-fg ring-2 ring-card">
+    <span className="absolute -right-2 -top-1.5 min-w-5 rounded-full bg-accent px-1.5 text-center text-[11px] font-bold leading-5 text-accent-fg ring-2 ring-card">
       {count > 99 ? "99+" : count}
     </span>
   );

@@ -11,10 +11,12 @@ export const metadata = { title: "Mensajes" };
 export default function MessagesPage() {
   return (
     <div className="grid gap-5">
-      <h1 className="text-2xl font-bold">Mensajes</h1>
+      <h1 className="page-title">Mensajes</h1>
       <PushToggle variant="banner" />
-      <details className="card p-3">
-        <summary className="cursor-pointer font-semibold">+ Crear grupo</summary>
+      <details className="card p-4">
+        <summary className="cursor-pointer list-none font-semibold text-accent [&::-webkit-details-marker]:hidden">
+          + Crear grupo
+        </summary>
         <ActionForm action={createGroup} submit="Crear y sumar gente" className="mt-3 grid gap-3">
           <input
             name="name"
@@ -41,7 +43,7 @@ async function Conversations() {
       <p className="text-sm text-muted">
         No tenés conversaciones todavía. Creá un grupo y sumá usuarios, o entrá al perfil de alguien
         (por ejemplo desde{" "}
-        <Link href="/mi-cuenta/coincidencias" className="text-accent underline">
+        <Link href="/mi-cuenta/coincidencias" className="link">
           Coincidencias
         </Link>
         ) y tocá &quot;Enviar mensaje&quot;.
@@ -49,13 +51,13 @@ async function Conversations() {
     );
   }
   return (
-    <ul className="card divide-y divide-border">
+    <ul className="card divide-y divide-border overflow-hidden">
       {list.map((c) => (
         <li key={c.id}>
-          <Link href={`/mensajes/${c.id}`} className="flex items-center gap-3 p-3 hover:bg-background">
+          <Link href={`/mensajes/${c.id}`} className="flex items-center gap-3 p-3.5 transition hover:bg-subtle">
             <span
-              className={`grid size-10 shrink-0 place-items-center rounded-full text-sm font-bold text-white ${
-                c.isDirect ? "bg-want" : "bg-have"
+              className={`grid size-11 shrink-0 place-items-center rounded-full text-base font-bold text-white ${
+                c.isDirect ? "bg-gradient-to-br from-want to-[#1f4fb0]" : "bg-gradient-to-br from-have to-[#0f6040]"
               }`}
             >
               {(c.name ?? c.others ?? "?").slice(0, 1).toUpperCase()}
@@ -69,7 +71,7 @@ async function Conversations() {
               </span>
             </span>
             {c.unread > 0 && (
-              <span className="rounded-full bg-accent px-2 text-xs font-bold leading-5 text-accent-fg">
+              <span className="min-w-5 rounded-full bg-accent px-1.5 text-center text-xs font-bold leading-5 text-accent-fg">
                 {c.unread}
               </span>
             )}
