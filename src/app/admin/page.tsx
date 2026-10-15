@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq, like, ne, or } from "drizzle-orm";
 import {
   bulkItems,
   createBrand,
   createCollection,
   createType,
+  grantAdmin,
   reviewUser,
   revokeAdmin,
 } from "@/app/actions/admin";
@@ -16,7 +17,7 @@ import { db, schema } from "@/db";
 
 export const metadata: Metadata = { title: "Admin" };
 
-export default function AdminPage() {
+export default function AdminPage({ searchParams }: PageProps<"/admin">) {
   return (
     <div className="grid gap-6">
       <h1 className="text-2xl font-bold">Cuentas nuevas</h1>
@@ -26,6 +27,9 @@ export default function AdminPage() {
       <h1 className="text-2xl font-bold">Administradores</h1>
       <Suspense fallback={<div className="card h-24 animate-pulse" />}>
         <Admins />
+      </Suspense>
+      <Suspense fallback={<div className="card h-24 animate-pulse" />}>
+        <GrantAdmin searchParams={searchParams as Promise<{ q?: string }>} />
       </Suspense>
       <h1 className="text-2xl font-bold">Carga del catálogo</h1>
       <Suspense fallback={<div className="card h-60 animate-pulse" />}>
@@ -103,6 +107,65 @@ async function Admins() {
         </li>
       ))}
     </ul>
+  );
+}
+
+async function GrantAdmin({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+  await requireAdmin();
+  const q = ((await searchParams).q ?? "").trim().slice(0, 60);
+  const found = q
+    ? await db
+        .select({
+          id: schema.users.id,
+          displayName: schema.users.displayName,
+          email: schema.users.email,
+          status: schema.users.status,
+        })
+        .from(schema.users)
+        .where(
+          and(
+            ne(schema.users.role, "admin"),
+            or(like(schema.users.email, `%${q}%`), like(schema.users.displayName, `%${q}%`)),
+          ),
+        )
+        .limit(20)
+    : [];
+
+  return (
+    <section className="card grid gap-3 p-4">
+      <h2 className="font-semibold">Dar permiso de administrador</h2>
+      <form className="flex gap-2">
+        <input
+          name="q"
+          defaultValue={q}
+          placeholder="Buscá por nombre o email"
+          className="input min-w-0 flex-1"
+        />
+        <button className="btn-ghost !py-2">Buscar</button>
+      </form>
+      {q && found.length === 0 && (
+        <p className="text-sm text-muted">No hay usuarios (que no sean admin) con ese nombre o email.</p>
+      )}
+      {found.length > 0 && (
+        <ul className="divide-y divide-border">
+          {found.map((u) => (
+            <li key={u.id} className="flex flex-wrap items-center gap-3 py-3">
+              <div className="min-w-0 flex-1">
+                <p className="font-medium">
+                  {u.displayName}
+                  {u.status === "pending" && <span className="text-sm text-muted"> (en revisión)</span>}
+                </p>
+                <p className="truncate text-sm text-muted">{u.email}</p>
+              </div>
+              <form action={grantAdmin}>
+                <input type="hidden" name="userId" value={u.id} />
+                <button className="btn-primary !py-2">Hacer admin</button>
+              </form>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
   );
 }
 
